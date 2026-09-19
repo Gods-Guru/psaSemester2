@@ -1,2 +1,8 @@
 <?php
-// Authentication helpers can be added here.
+
+session_start();
+
+if (!isset($_SESSION["admin_id"])) {
+    header("Location: login.php");
+    exit;
+}

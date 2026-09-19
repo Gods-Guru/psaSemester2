@@ -1,3 +1,7 @@
+<?php
+require_once "../includes/auth.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +17,15 @@
         <nav aria-label="Admin navigation">
             <ul>
                 <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="#">Content</a></li>
-                <li><a href="#">Programmes</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Volunteers</a></li>
-                <li><a href="#">Donations</a></li>
-                <li><a href="#">Sponsors</a></li>
-                <li><a href="#">Community Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="programs.php">Content</a></li>
+                <li><a href="programs.php">Programmes</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="volunteers.php">Volunteers</a></li>
+                <li><a href="donations.php">Donations</a></li>
+                <li><a href="sponsors.php">Sponsors</a></li>
+                <li><a href="community-reports.php">Community Reports</a></li>
+                <li><a href="dashboard.php">Analytics</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </aside>
