@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor | My Next Level</title>
+    <meta name="description" content="Sponsorship page for My Next Level." />
+    <link rel="stylesheet" href="../styles/index.css" />
+</head>
+<body>
+    <site-header></site-header>
+
+    <main>
+        <section aria-labelledby="sponsor-page-heading">
+            <p>Sponsor</p>
+            <h1 id="sponsor-page-heading">Support My Next Level as a valued partner.</h1>
+            <p>[Sponsorship introduction placeholder.]</p>
+        </section>
+
+        <section aria-labelledby="why-sponsor-heading">
+            <h2 id="why-sponsor-heading">Why sponsor My Next Level?</h2>
+            <p>[Explanation of the impact sponsorship can have on community programmes and support services.]</p>
+        </section>
+
+        <section aria-labelledby="sponsor-info-heading">
+            <h2 id="sponsor-info-heading">Sponsorship information</h2>
+            <ul>
+                <li>[Sponsorship type placeholder]</li>
+                <li>[Programme support placeholder]</li>
+                <li>[Community outreach placeholder]</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="sponsor-form-heading">
+            <h2 id="sponsor-form-heading">Sponsor enquiry form</h2>
+            <form>
+                <label for="sponsor-name">Full name</label>
+                <input id="sponsor-name" type="text" name="full_name" placeholder="Your full name" required />
+
+                <label for="organisation-name">Organisation name</label>
+                <input id="organisation-name" type="text" name="organisation_name" placeholder="Your organisation name" />
+
+                <label for="sponsor-email">Email</label>
+                <input id="sponsor-email" type="email" name="email" placeholder="you@example.com" required />
+
+                <label for="sponsor-phone">Phone</label>
+                <input id="sponsor-phone" type="tel" name="phone" placeholder="Your phone number" />
+
+                <label for="sponsorship-interest">Sponsorship interest or type</label>
+                <select id="sponsorship-interest" name="sponsorship_interest">
+                    <option value="">Select sponsorship interest</option>
+                    <option value="programme-support">Programme support</option>
+                    <option value="community-outreach">Community outreach</option>
+                    <option value="event-sponsorship">Event sponsorship</option>
+                    <option value="general-support">General support</option>
+                </select>
+
+                <label for="sponsor-message">Message</label>
+                <textarea id="sponsor-message" name="message" rows="5" placeholder="Tell us about your sponsorship interest" required></textarea>
+
+                <button type="submit">Submit enquiry</button>
+                <div role="status" aria-live="polite">[Success message container]</div>
+                <div role="alert" aria-live="assertive">[Error message container]</div>
+            </form>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+    <script src="../components.js"></script>
+</body>
+</html>
