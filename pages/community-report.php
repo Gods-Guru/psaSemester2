@@ -1,3 +1,78 @@
+<?php
+
+require_once "../includes/database.php";
+
+$success = "";
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $community_name = trim($_POST["community_name"]);
+    $location = trim($_POST["location"]);
+    $need_type = trim($_POST["need_type"]);
+    $description = trim($_POST["situation_description"]);
+    $people_affected = !empty($_POST["people_affected"])
+        ? (int) $_POST["people_affected"]
+        : null;
+    $reporter_name = trim($_POST["reporter_name"]);
+    $email = trim($_POST["reporter_email"]);
+    $phone = trim($_POST["reporter_phone"]);
+    $additional_information = trim($_POST["additional_information"]);
+
+    if (
+        $community_name === "" ||
+        $location === "" ||
+        $need_type === "" ||
+        $description === "" ||
+        $reporter_name === "" ||
+        $email === ""
+    ) {
+
+        $error = "Please fill in all required fields.";
+
+    } else {
+
+        $stmt = $conn->prepare(
+            "INSERT INTO community_reports
+            (
+                reporter_name,
+                email,
+                phone,
+                community_name,
+                location,
+                need_type,
+                description,
+                people_affected,
+                additional_information
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        );
+
+        $stmt->bind_param(
+            "sssssssis",
+            $reporter_name,
+            $email,
+            $phone,
+            $community_name,
+            $location,
+            $need_type,
+            $description,
+            $people_affected,
+            $additional_information
+        );
+
+        if ($stmt->execute()) {
+            $success = "Your community report has been submitted successfully.";
+        } else {
+            $error = "Something went wrong. Please try again.";
+        }
+
+        $stmt->close();
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +93,7 @@
         </section>
 
         <section>
-            <form>
+            <form method="POST">
                 <label for="community-name">Community name</label>
                 <input id="community-name" type="text" name="community_name" placeholder="Community or area name" />
 
@@ -57,8 +132,17 @@
                 <input id="support-image" type="file" name="support_image" accept="image/*" />
 
                 <button type="submit">Submit community report</button>
-                <div role="status" aria-live="polite">[Success message container]</div>
-                <div role="alert" aria-live="assertive">[Error message container]</div>
+                <?php if ($success): ?>
+                <div role="status" aria-live="polite">
+                    <?php echo htmlspecialchars($success); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($error): ?>
+                <div role="alert" aria-live="assertive">
+                    <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php endif; ?>
             </form>
         </section>
     </main>

@@ -1,5 +1,14 @@
 <?php
 require_once "../includes/auth.php";
+require_once "../includes/database.php";
+
+$volunteers = $conn->query("SELECT COUNT(*) AS total FROM volunteers")->fetch_assoc()["total"];
+
+$donations = $conn->query("SELECT COALESCE(SUM(amount), 0) AS total FROM donations")->fetch_assoc()["total"];
+
+$programs = $conn->query("SELECT COUNT(*) AS total FROM programs")->fetch_assoc()["total"];
+
+$reports = $conn->query("SELECT COUNT(*) AS total FROM community_reports")->fetch_assoc()["total"];
 ?>
 
 <!DOCTYPE html>
@@ -38,19 +47,21 @@ require_once "../includes/auth.php";
         <section aria-label="Summary statistics">
             <article>
                 <h3>Total volunteers</h3>
-                <p>[Number placeholder]</p>
+                <p>
+                    <?php echo $volunteers; ?>
+                </p>
             </article>
             <article>
                 <h3>Total donations</h3>
-                <p>[Amount placeholder]</p>
+                <p>$<?php echo number_format($donations, 2); ?></p>
             </article>
             <article>
                 <h3>Total programmes</h3>
-                <p>[Number placeholder]</p>
+                <p><?php echo $programs; ?></p>
             </article>
             <article>
                 <h3>Community reports</h3>
-                <p>[Number placeholder]</p>
+                <p><?php echo $reports; ?></p>
             </article>
             <article>
                 <h3>Website visitors</h3>

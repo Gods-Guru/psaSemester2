@@ -1,3 +1,65 @@
+<?php
+
+require_once "../includes/database.php";
+
+$success = "";
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $amount_option = $_POST["amount"] ?? "";
+    $custom_amount = $_POST["custom_amount"] ?? "";
+
+    $donor_name = trim($_POST["donor_name"] ?? "");
+    $donor_email = trim($_POST["donor_email"] ?? "");
+    $donor_phone = trim($_POST["donor_phone"] ?? "");
+    $donation_message = trim($_POST["donation_message"] ?? "");
+
+    // Determine the donation amount
+    if ($amount_option === "custom") {
+        $amount = (float) $custom_amount;
+    } else {
+        $amount = (float) $amount_option;
+    }
+
+    if (
+        $donor_name === "" ||
+        $donor_email === "" ||
+        $amount <= 0
+    ) {
+
+        $error = "Please provide your name, email and a valid donation amount.";
+
+    } else {
+
+        $stmt = $conn->prepare(
+            "INSERT INTO donations
+            (donor_name, email, phone, amount, message)
+            VALUES (?, ?, ?, ?, ?)"
+        );
+
+        $stmt->bind_param(
+            "sssds",
+            $donor_name,
+            $donor_email,
+            $donor_phone,
+            $amount,
+            $donation_message
+        );
+
+        if ($stmt->execute()) {
+            $success = "Your donation has been recorded successfully. Payment processing will be added later.";
+        } else {
+            $error = "Something went wrong. Please try again.";
+        }
+
+        $stmt->close();
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +86,13 @@
 
         <section aria-labelledby="donation-options-heading">
             <h2 id="donation-options-heading">Choose a donation amount</h2>
-            <form>
+            <form method="POST">
                 <fieldset>
                     <legend>Donation amount</legend>
-                    <label><input type="radio" name="amount" value="50" /> RM 50</label>
-                    <label><input type="radio" name="amount" value="100" /> RM 100</label>
-                    <label><input type="radio" name="amount" value="250" /> RM 250</label>
-                    <label><input type="radio" name="amount" value="500" /> RM 500</label>
+                        <label><input type="radio" name="amount" value="50" /> ₦50k</label>
+                        <label><input type="radio" name="amount" value="100" /> ₦100k</label>
+                        <label><input type="radio" name="amount" value="250" /> ₦250k</label>
+                        <label><input type="radio" name="amount" value="500" /> ₦500k</label>
                     <label><input type="radio" name="amount" value="custom" /> Custom amount</label>
                 </fieldset>
 
@@ -58,8 +120,17 @@
                 </fieldset>
 
                 <button type="submit">Donate now</button>
-                <div role="status" aria-live="polite">[Success message container]</div>
-                <div role="alert" aria-live="assertive">[Error message container]</div>
+                <?php if ($success): ?>
+                    <div role="status" aria-live="polite">
+                        <?php echo htmlspecialchars($success); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($error): ?>
+                    <div role="alert" aria-live="assertive">
+                        <?php echo htmlspecialchars($error); ?>
+                    </div>
+                <?php endif; ?>
             </form>
         </section>
     </main>

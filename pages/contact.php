@@ -1,3 +1,55 @@
+<?php
+
+require_once "../includes/database.php";
+
+$success = "";
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $name = trim($_POST["name"]);
+    $email = trim($_POST["email"]);
+    $subject = trim($_POST["subject"]);
+    $message = trim($_POST["message"]);
+
+    if (
+        $name === "" ||
+        $email === "" ||
+        $subject === "" ||
+        $message === ""
+    ) {
+
+        $error = "Please fill in all required fields.";
+
+    } else {
+
+        $stmt = $conn->prepare(
+            "INSERT INTO contacts
+            (name, email, subject, message)
+            VALUES (?, ?, ?, ?)"
+        );
+
+        $stmt->bind_param(
+            "ssss",
+            $name,
+            $email,
+            $subject,
+            $message
+        );
+
+        if ($stmt->execute()) {
+            $success = "Your message has been sent successfully.";
+        } else {
+            $error = "Something went wrong. Please try again.";
+        }
+
+        $stmt->close();
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +81,7 @@
 
         <section aria-labelledby="contact-form-heading">
             <h2 id="contact-form-heading">Send a message</h2>
-            <form>
+            <form method="POST">
                 <label for="contact-name">Name</label>
                 <input id="contact-name" type="text" name="name" placeholder="Your name" required />
 
@@ -43,8 +95,17 @@
                 <textarea id="contact-message" name="message" rows="5" placeholder="Your message" required></textarea>
 
                 <button type="submit">Send message</button>
-                <div role="status" aria-live="polite">[Success message container]</div>
-                <div role="alert" aria-live="assertive">[Error message container]</div>
+                <?php if ($success): ?>
+                    <div role="status" aria-live="polite">
+                        <?php echo htmlspecialchars($success); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($error): ?>
+                    <div role="alert" aria-live="assertive">
+                        <?php echo htmlspecialchars($error); ?>
+                    </div>
+                <?php endif; ?>
             </form>
         </section>
     </main>

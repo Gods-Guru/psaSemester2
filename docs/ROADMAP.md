@@ -1,7 +1,7 @@
 # My Next Level Development Roadmap
 
 ## Project Overview
-My Next Level is a full-stack charity organization web application. It has a public-facing website for sharing the organization�s mission, programs, gallery, events, and contact information, and a restricted admin area for managing site content and volunteer information.
+My Next Level is a full-stack charity organization web application. It has a public-facing website for sharing the organization's mission, programs, gallery, events, and contact information, and a restricted admin area for managing site content and volunteer information.
 
 ## Technology Stack
 - Frontend: HTML5, CSS3, JavaScript
@@ -124,12 +124,12 @@ Here is the detailed roadmap I’d use for **My Next Level**.
 ### 0.1 Define the Project
 
 * [x] Confirm project name: **My Next Level**
-* [ ] Write the project problem statement
-* [ ] Define the purpose of the application
-* [ ] Define project objectives
-* [ ] Define target users
-* [ ] Define system scope
-* [ ] Identify features that are **MVP** versus future features
+* [x] Write the project problem statement
+* [x] Define the purpose of the application
+* [x] Define project objectives
+* [x] Define target users
+* [x] Define system scope
+* [x] Identify features that are **MVP** versus future features
 * [ ] Identify technical requirements from the school
 
 ### Deliverable
@@ -156,40 +156,40 @@ Document what the system must do.
 
 #### Public users
 
-* [ ] View homepage
-* [ ] Learn about the organization
-* [ ] View programs
-* [ ] View gallery
-* [ ] View ways to get involved
-* [ ] Submit volunteer information
-* [ ] Submit contact/inquiry information
-* [ ] Navigate between pages
+* [x] View homepage
+* [x] Learn about the organization
+* [x] View programs
+* [x] View gallery
+* [x] View ways to get involved
+* [x] Submit volunteer information
+* [x] Submit contact/inquiry information
+* [x] Navigate between pages
 
 #### Administrators
 
-* [ ] Log in
-* [ ] Access dashboard
-* [ ] View system overview
-* [ ] Add programs
-* [ ] Edit programs
-* [ ] Delete programs
+* [x] Log in
+* [x] Access dashboard
+* [x] View system overview
+* [x] Add programs
+* [x] Edit programs
+* [x] Delete programs
 * [ ] Add gallery items
 * [ ] Edit gallery items
 * [ ] Delete gallery items
-* [ ] View volunteers
-* [ ] Manage volunteer records
-* [ ] Log out
+* [x] View volunteers
+* [x] Manage volunteer records
+* [x] Log out
 
 ### 1.2 Non-functional Requirements
 
 Define:
 
-* [ ] Responsive design
+* [x] Responsive design
 * [ ] Accessibility
-* [ ] Usability
+* [x] Usability
 * [ ] Performance
 * [ ] Security
-* [ ] Maintainability
+* [x] Maintainability
 * [ ] Data integrity
 
 ### Deliverable
@@ -233,11 +233,11 @@ MY NEXT LEVEL
 
 ### 2.2 Define Navigation
 
-* [ ] Desktop navigation
+* [x] Desktop navigation
 * [ ] Mobile navigation
-* [ ] Footer navigation
-* [ ] Admin navigation
-* [ ] CTA links
+* [x] Footer navigation
+* [x] Admin navigation
+* [x] CTA links
 * [ ] Breadcrumbs where useful
 
 ### Deliverable
@@ -297,15 +297,15 @@ Don't forget the less glamorous part.
 
 Design what happens when:
 
-* [ ] Login fails
-* [ ] Required field is empty
+* [x] Login fails
+* [x] Required field is empty
 * [ ] Invalid email is entered
-* [ ] Database connection fails
+* [x] Database connection fails
 * [ ] Record doesn't exist
 * [ ] Unauthorized user accesses `/admin`
 * [ ] Image upload fails
 * [ ] Delete operation fails
-* [ ] Form submission fails
+* [x] Form submission fails
 
 ### Deliverable
 
@@ -319,20 +319,20 @@ Design what happens when:
 
 Define:
 
-* [ ] Primary color
-* [ ] Secondary color
-* [ ] Background colors
-* [ ] Text colors
-* [ ] Error/success colors
-* [ ] Typography
-* [ ] Font sizes
-* [ ] Spacing system
-* [ ] Border radius
-* [ ] Shadows
-* [ ] Buttons
-* [ ] Form fields
-* [ ] Cards
-* [ ] Navigation
+* [x] Primary color
+* [x] Secondary color
+* [x] Background colors
+* [x] Text colors
+* [x] Error/success colors
+* [x] Typography
+* [x] Font sizes
+* [x] Spacing system
+* [x] Border radius
+* [x] Shadows
+* [x] Buttons
+* [x] Form fields
+* [x] Cards
+* [x] Navigation
 * [ ] Icons
 
 ## 4.2 Wireframes
@@ -381,13 +381,13 @@ Now we touch code.
 
 ### 5.1 Install/Configure
 
-* [ ] VS Code
-* [ ] XAMPP
-* [ ] Apache
-* [ ] MySQL
-* [ ] PHP
-* [ ] Git
-* [ ] GitHub
+* [x] VS Code
+* [x] XAMPP
+* [x] Apache
+* [x] MySQL
+* [x] PHP
+* [x] Git
+* [x] GitHub
 
 ### 5.2 Create Repository
 
@@ -437,10 +437,10 @@ Build the reusable structure first.
 
 Create:
 
-* [ ] Header
-* [ ] Navigation
-* [ ] Main content
-* [ ] Footer
+* [x] Header
+* [x] Navigation
+* [x] Main content
+* [x] Footer
 
 If using PHP includes:
 
@@ -458,16 +458,16 @@ and:
 
 Create:
 
-* [ ] CSS reset/base
-* [ ] Variables
-* [ ] Typography
-* [ ] Container
-* [ ] Grid
-* [ ] Flex utilities
-* [ ] Buttons
-* [ ] Forms
-* [ ] Cards
-* [ ] Responsive rules
+* [x] CSS reset/base
+* [x] Variables
+* [x] Typography
+* [x] Container
+* [x] Grid
+* [x] Flex utilities
+* [x] Buttons
+* [x] Forms
+* [x] Cards
+* [x] Responsive rules
 
 ### 6.3 Global JavaScript
 
@@ -528,11 +528,11 @@ Build:
 
 Build:
 
-* [ ] Program cards
-* [ ] Program descriptions
-* [ ] Images
+* [x] Program cards
+* [x] Program descriptions
+* [x] Images
 * [ ] Program details
-* [ ] CTA
+* [x] CTA
 
 Initially these can use static data.
 
@@ -544,8 +544,8 @@ Later PHP will make them database-driven.
 
 Build:
 
-* [ ] Gallery grid
-* [ ] Image cards
+* [x] Gallery grid
+* [x] Image cards
 * [ ] Image preview/lightbox if required
 * [ ] Responsive layout
 
@@ -555,10 +555,10 @@ Build:
 
 Build:
 
-* [ ] Volunteer information
-* [ ] Volunteer form
-* [ ] Participation options
-* [ ] CTA
+* [x] Volunteer information
+* [x] Volunteer form
+* [x] Participation options
+* [x] CTA
 
 ---
 
@@ -566,12 +566,12 @@ Build:
 
 Build:
 
-* [ ] Contact information
-* [ ] Contact form
-* [ ] Email field
-* [ ] Message field
-* [ ] Validation
-* [ ] Success/error states
+* [x] Contact information
+* [x] Contact form
+* [x] Email field
+* [x] Message field
+* [x] Validation
+* [x] Success/error states
 
 ### Deliverable
 
@@ -743,14 +743,14 @@ MySQL
 Test:
 
 * [ ] Connection succeeds
-* [ ] Connection failure handled properly
+* [x] Connection failure handled properly
 
 ### 10.2 Database Queries
 
 Implement safely using:
 
-* Prepared statements
-* Parameterized queries
+* [x] Prepared statements
+* [x] Parameterized queries
 
 Avoid concatenating user input directly into SQL.
 
@@ -777,7 +777,7 @@ Programs Page
 Implement:
 
 * [ ] Retrieve programs
-* [ ] Display programs
+* [x] Display programs
 * [ ] Handle missing records
 * [ ] Handle database errors
 
@@ -786,7 +786,7 @@ Implement:
 Implement:
 
 * [ ] Retrieve gallery items
-* [ ] Display images
+* [x] Display images
 * [ ] Handle missing images
 
 ## Volunteers
@@ -829,11 +829,11 @@ This is where things stop being a pretty website and become a proper application
 
 Build:
 
-* [ ] Login form
+* [x] Login form
 * [ ] Email validation
 * [ ] Password validation
-* [ ] Credential verification
-* [ ] Error handling
+* [x] Credential verification
+* [x] Error handling
 
 ### 12.2 Password Security
 
@@ -865,11 +865,11 @@ Humanity has suffered enough from that.
 
 Implement:
 
-* [ ] Session creation
-* [ ] Session checking
-* [ ] Protected pages
-* [ ] Logout
-* [ ] Session destruction
+* [x] Session creation
+* [x] Session checking
+* [x] Protected pages
+* [x] Logout
+* [x] Session destruction
 
 ### Deliverable
 
@@ -892,10 +892,10 @@ Messages:       15
 
 Build:
 
-* [ ] Sidebar/navigation
-* [ ] Dashboard cards
+* [x] Sidebar/navigation
+* [x] Dashboard cards
 * [ ] Recent activity
-* [ ] Responsive layout
+* [x] Responsive layout
 
 ---
 
@@ -907,24 +907,24 @@ Implement complete CRUD.
 
 Admin can:
 
-* [ ] Add program
-* [ ] Enter title
-* [ ] Enter description
+* [x] Add program
+* [x] Enter title
+* [x] Enter description
 * [ ] Upload/select image
 
 ### Read
 
-* [ ] View all programs
-* [ ] View program details
+* [x] View all programs
+* [x] View program details
 
 ### Update
 
-* [ ] Edit program
+* [x] Edit program
 * [ ] Update image/content
 
 ### Delete
 
-* [ ] Delete program
+* [x] Delete program
 * [ ] Confirmation before deletion
 
 ### Test
@@ -968,11 +968,11 @@ Validate:
 
 Admin should be able to:
 
-* [ ] View volunteers
-* [ ] View individual volunteer details
+* [x] View volunteers
+* [x] View individual volunteer details
 * [ ] Search/filter if required
-* [ ] Change volunteer status
-* [ ] Delete records where appropriate
+* [x] Change volunteer status
+* [x] Delete records where appropriate
 
 Possible statuses:
 
@@ -989,11 +989,11 @@ Rejected
 
 If contact submissions are stored in MySQL:
 
-* [ ] View messages
-* [ ] View individual message
+* [x] View messages
+* [x] View individual message
 * [ ] Mark as read
-* [ ] Delete message
-* [ ] Prevent unauthorized access
+* [x] Delete message
+* [x] Prevent unauthorized access
 
 ---
 
@@ -1004,28 +1004,28 @@ Do a dedicated security pass.
 ### Authentication
 
 * [ ] Password hashing
-* [ ] Session protection
-* [ ] Protected admin routes
-* [ ] Logout functionality
+* [x] Session protection
+* [x] Protected admin routes
+* [x] Logout functionality
 
 ### Database
 
-* [ ] Prepared statements
-* [ ] Validate input
-* [ ] Sanitize output where appropriate
+* [x] Prepared statements
+* [x] Validate input
+* [x] Sanitize output where appropriate
 
 ### Forms
 
 * [ ] Client-side validation
-* [ ] Server-side validation
+* [x] Server-side validation
 
 ### Output
 
 Protect against:
 
-* [ ] SQL injection
-* [ ] XSS
-* [ ] Unauthorized admin access
+* [x] SQL injection
+* [x] XSS
+* [x] Unauthorized admin access
 * [ ] Malicious file uploads
 
 ### Credentials
@@ -1045,13 +1045,13 @@ Create proper handling for:
 * [ ] Invalid URLs
 * [ ] Missing records
 * [ ] Failed database connections
-* [ ] Failed SQL queries
-* [ ] Invalid forms
-* [ ] Invalid login
+* [x] Failed SQL queries
+* [x] Invalid forms
+* [x] Invalid login
 * [ ] Unauthorized access
 * [ ] Missing images
 * [ ] Failed uploads
-* [ ] Empty database
+* [x] Empty database
 
 Provide useful user-facing messages instead of exposing PHP/MySQL errors.
 
@@ -1168,28 +1168,28 @@ Prepare:
 
 ### Project Documentation
 
-* [ ] Introduction
-* [ ] Problem statement
-* [ ] Objectives
-* [ ] Scope
-* [ ] Requirements
+* [x] Introduction
+* [x] Problem statement
+* [x] Objectives
+* [x] Scope
+* [x] Requirements
 * [ ] System architecture
 * [ ] Database design
 * [ ] ER diagram
-* [ ] User flows
+* [x] User flows
 * [ ] Screenshots
 * [ ] Testing
 * [ ] Conclusion
 
 ### Repository Documentation
 
-* [ ] README
-* [ ] Installation instructions
-* [ ] Database setup
-* [ ] Admin setup
-* [ ] Technologies
-* [ ] Features
-* [ ] Project structure
+* [x] README
+* [x] Installation instructions
+* [x] Database setup
+* [x] Admin setup
+* [x] Technologies
+* [x] Features
+* [x] Project structure
 
 ---
 
