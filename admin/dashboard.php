@@ -2,13 +2,61 @@
 require_once "../includes/auth.php";
 require_once "../includes/database.php";
 
-$volunteers = $conn->query("SELECT COUNT(*) AS total FROM volunteers")->fetch_assoc()["total"];
+$volunteers = $conn->query(
+    "SELECT COUNT(*) AS total FROM volunteers"
+)->fetch_assoc()["total"];
 
-$donations = $conn->query("SELECT COALESCE(SUM(amount), 0) AS total FROM donations")->fetch_assoc()["total"];
+$pending_volunteers = $conn->query(
+    "SELECT COUNT(*) AS total FROM volunteers WHERE status = 'pending'"
+)->fetch_assoc()["total"];
 
-$programs = $conn->query("SELECT COUNT(*) AS total FROM programs")->fetch_assoc()["total"];
+$donations = $conn->query(
+    "SELECT COALESCE(SUM(amount), 0) AS total
+     FROM donations
+     WHERE archived = 0"
+)->fetch_assoc()["total"];
 
-$reports = $conn->query("SELECT COUNT(*) AS total FROM community_reports")->fetch_assoc()["total"];
+$pending_donations = $conn->query(
+    "SELECT COUNT(*) AS total
+     FROM donations
+     WHERE payment_status = 'pending' AND archived = 0"
+)->fetch_assoc()["total"];
+
+$programs = $conn->query(
+    "SELECT COUNT(*) AS total FROM programs"
+)->fetch_assoc()["total"];
+
+$sponsors = $conn->query(
+    "SELECT COUNT(*) AS total FROM sponsors"
+)->fetch_assoc()["total"];
+
+$pending_sponsors = $conn->query(
+    "SELECT COUNT(*) AS total
+     FROM sponsors
+     WHERE status = 'pending'"
+)->fetch_assoc()["total"];
+
+$reports = $conn->query(
+    "SELECT COUNT(*) AS total FROM community_reports"
+)->fetch_assoc()["total"];
+
+$pending_reports = $conn->query(
+    "SELECT COUNT(*) AS total
+     FROM community_reports
+     WHERE status = 'pending'"
+)->fetch_assoc()["total"];
+
+$messages = $conn->query(
+    "SELECT COUNT(*) AS total FROM contacts"
+)->fetch_assoc()["total"];
+
+$recent_volunteers = $conn->query(
+    "SELECT full_name, created_at
+     FROM volunteers
+     ORDER BY created_at DESC
+     LIMIT 5"
+);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,103 +67,261 @@ $reports = $conn->query("SELECT COUNT(*) AS total FROM community_reports")->fetc
     <title>Admin Dashboard | My Next Level</title>
     <meta name="description" content="Administrative dashboard placeholder for My Next Level." />
     <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
 </head>
-<body>
-    <aside>
-        <h1>My Next Level</h1>
-        <nav aria-label="Admin navigation">
-            <ul>
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="programs.php">Content</a></li>
-                <li><a href="programs.php">Programmes</a></li>
-                <li><a href="gallery.php">Gallery</a></li>
-                <li><a href="volunteers.php">Volunteers</a></li>
-                <li><a href="donations.php">Donations</a></li>
-                <li><a href="sponsors.php">Sponsors</a></li>
-                <li><a href="community-reports.php">Community Reports</a></li>
-                <li><a href="dashboard.php">Analytics</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </aside>
+<body class="admin-dashboard">
+    <div class="admin-layout">
+        <?php require_once "admin-navigation.php"; ?>
 
-    <main>
-        <header>
-            <h2>Dashboard overview</h2>
+        <main class="admin-main">
+        <header class="admin-page-header admin-header">
+            <div>
+                <!-- <p>Overview</p> -->
+                <h1>Dashboard overview</h1>
+            </div>
         </header>
 
-        <section aria-label="Summary statistics">
-            <article>
+        <section class="admin-stats" aria-label="Summary statistics">
+            <article class="admin-stat-card">
                 <h3>Total volunteers</h3>
-                <p>
-                    <?php echo $volunteers; ?>
-                </p>
+                <p><?php echo $volunteers; ?></p>
+                <small><?php echo $pending_volunteers; ?> pending</small>
             </article>
-            <article>
+
+            <article class="admin-stat-card">
                 <h3>Total donations</h3>
-                <p>$<?php echo number_format($donations, 2); ?></p>
+                <p>₦<?php echo number_format($donations, 2); ?></p>
+                <small><?php echo $pending_donations; ?> pending</small>
             </article>
-            <article>
+
+            <article class="admin-stat-card">
                 <h3>Total programmes</h3>
                 <p><?php echo $programs; ?></p>
             </article>
-            <article>
+
+            <article class="admin-stat-card">
+                <h3>Total sponsors</h3>
+                <p><?php echo $sponsors; ?></p>
+                <small><?php echo $pending_sponsors; ?> pending</small>
+            </article>
+
+            <article class="admin-stat-card">
                 <h3>Community reports</h3>
                 <p><?php echo $reports; ?></p>
+                <small><?php echo $pending_reports; ?> pending</small>
             </article>
-            <article>
-                <h3>Website visitors</h3>
-                <p>[Number placeholder]</p>
+
+            <article class="admin-stat-card">
+                <h3>Contact messages</h3>
+                <p><?php echo $messages; ?></p>
             </article>
+
         </section>
 
-        <section aria-labelledby="programme-attention-heading">
+        <section
+            class="admin-section"
+            aria-labelledby="programme-attention-heading"
+        >
+
             <h2 id="programme-attention-heading">Programme attention</h2>
-            <p>[Placeholder section for highlighting the programmes receiving the most attention.]</p>
+
+            <?php
+            $programme_attention = $conn->query(
+                "SELECT
+                    programs.title,
+                    COUNT(volunteers.id) AS volunteer_count
+                FROM programs
+                LEFT JOIN volunteers
+                    ON programs.id = volunteers.program_id
+                GROUP BY programs.id, programs.title
+                ORDER BY volunteer_count DESC
+                LIMIT 5"
+            );
+            ?>
+
+            <?php if ($programme_attention->num_rows > 0): ?>
+
+                <div class="admin-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Programme</th>
+                                <th>Volunteer Applications</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <?php while ($programme = $programme_attention->fetch_assoc()): ?>
+
+                                <tr>
+                                    <td>
+                                        <?php echo htmlspecialchars($programme["title"]); ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo $programme["volunteer_count"]; ?>
+                                    </td>
+                                </tr>
+
+                            <?php endwhile; ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            <?php else: ?>
+
+                <p>No programme activity available yet.</p>
+
+            <?php endif; ?>
+
         </section>
 
-        <section aria-labelledby="recent-activity-heading">
+        <section
+            class="admin-section"
+            aria-labelledby="recent-activity-heading"
+        >
+
             <h2 id="recent-activity-heading">Recent activity</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Activity</th>
-                        <th>Details</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>[Activity placeholder]</td>
-                        <td>[Details placeholder]</td>
-                        <td>[Date placeholder]</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <?php if ($recent_volunteers->num_rows > 0): ?>
+
+                <div class="admin-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                <th>Details</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <?php while ($volunteer = $recent_volunteers->fetch_assoc()): ?>
+
+                                <tr>
+                                    <td>New volunteer application</td>
+
+                                    <td>
+                                        <?php echo htmlspecialchars($volunteer["full_name"]); ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo htmlspecialchars($volunteer["created_at"]); ?>
+                                    </td>
+                                </tr>
+
+                            <?php endwhile; ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            <?php else: ?>
+
+                <p>No recent volunteer activity.</p>
+
+            <?php endif; ?>
+
         </section>
 
-        <section aria-labelledby="donation-overview-heading">
+        <section
+            class="admin-section"
+            aria-labelledby="donation-overview-heading"
+        >
+
             <h2 id="donation-overview-heading">Donation overview</h2>
-            <p>[Placeholder section for donation statistics and trends.]</p>
+
+            <?php
+            $paid_donations = $conn->query(
+                "SELECT COALESCE(SUM(amount), 0) AS total
+                FROM donations
+                WHERE payment_status = 'paid'
+                AND archived = 0"
+            )->fetch_assoc()["total"];
+
+            $pending_donation_amount = $conn->query(
+                "SELECT COALESCE(SUM(amount), 0) AS total
+                FROM donations
+                WHERE payment_status = 'pending'
+                AND archived = 0"
+            )->fetch_assoc()["total"];
+
+            $failed_donation_amount = $conn->query(
+                "SELECT COALESCE(SUM(amount), 0) AS total
+                FROM donations
+                WHERE payment_status = 'failed'
+                AND archived = 0"
+            )->fetch_assoc()["total"];
+            ?>
+
+            <div class="admin-overview-grid">
+
+                <article class="admin-stat-card">
+                    <h3>Paid donations</h3>
+                    <p>
+                        ₦<?php echo number_format($paid_donations, 2); ?>
+                    </p>
+                </article>
+
+                <article class="admin-stat-card">
+                    <h3>Pending donations</h3>
+                    <p>
+                        ₦<?php echo number_format($pending_donation_amount, 2); ?>
+                    </p>
+                </article>
+
+                <article class="admin-stat-card">
+                    <h3>Failed donations</h3>
+                    <p>
+                        ₦<?php echo number_format($failed_donation_amount, 2); ?>
+                    </p>
+                </article>
+
+            </div>
+
         </section>
 
-        <section aria-labelledby="website-statistics-heading">
+        <section
+            class="admin-section"
+            aria-labelledby="website-statistics-heading"
+        >
+
             <h2 id="website-statistics-heading">Website statistics</h2>
-            <div>
-                <article>
-                    <h3>Visitors</h3>
-                    <p>[Placeholder]</p>
+
+            <div class="admin-overview-grid">
+
+                <article class="admin-stat-card">
+                    <h3>Programmes</h3>
+                    <p>
+                        <?php echo $programs; ?>
+                    </p>
                 </article>
-                <article>
-                    <h3>Donations</h3>
-                    <p>[Placeholder]</p>
+
+                <article class="admin-stat-card">
+                    <h3>Volunteer applications</h3>
+                    <p>
+                        <?php echo $volunteers; ?>
+                    </p>
                 </article>
-                <article>
-                    <h3>Volunteers</h3>
-                    <p>[Placeholder]</p>
+
+                <article class="admin-stat-card">
+                    <h3>Contact messages</h3>
+                    <p>
+                        <?php echo $messages; ?>
+                    </p>
                 </article>
+
             </div>
+
+            <p>
+                Visitor analytics are not currently being tracked.
+            </p>
+
         </section>
-    </main>
+        </main>
+    </div>
 </body>
 </html>

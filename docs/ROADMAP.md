@@ -1,1369 +1,673 @@
-# My Next Level Development Roadmap
+# My Next Level — Updated Project Roadmap
 
-## Project Overview
-My Next Level is a full-stack charity organization web application. It has a public-facing website for sharing the organization's mission, programs, gallery, events, and contact information, and a restricted admin area for managing site content and volunteer information.
-
-## Technology Stack
-- Frontend: HTML5, CSS3, JavaScript
-- Backend: PHP
-- Database: MySQL
-
-## Development Phases
-
-### Phase 0: Project Foundation
-- Confirm the project name and purpose.
-- Define the problem statement, objectives, and scope.
-- Identify the minimum viable product and future enhancements.
-
-### Phase 1: Requirements Analysis
-Document the core functional and non-functional requirements.
-
-**Public users**
-- View the home page.
-- Learn about the organization.
-- Explore programs and activities.
-- View gallery content.
-- Access the Get Involved page.
-- Submit volunteer and contact information.
-
-**Administrators**
-- Log in securely.
-- Access the dashboard.
-- Manage programs, gallery content, and volunteers.
-- Review submissions and manage records.
-- Log out safely.
-
-**Non-functional requirements**
-- Responsive design
-- Accessibility
-- Usability
-- Security
-- Data integrity
-- Maintainability
-
-### Phase 2: Information Architecture
-Create the site structure and navigation.
-
-**Public pages**
-- Home
-- About
-- Programs
-- Gallery
-- Get Involved
-- Contact
-
-**Admin pages**
-- Login
-- Dashboard
-- Programs
-- Gallery
-- Volunteers
-
-### Phase 3: User Experience Design
-Create a layout with clear navigation, strong calls to action, consistent styling, and responsive page behavior.
-
-### Phase 4: Project Setup
-Set up the folder structure and local development environment.
-
-### Phase 5: Frontend Foundation
-Create the HTML structure and shared styling for the public pages.
-
-### Phase 6: Public Website Pages
-Build the home, about, programs, gallery, get involved, and contact pages.
-
-### Phase 7: Interactions and Form Handling
-Add JavaScript interactions, page behavior, and client-side validation.
-
-### Phase 8: Database Design
-Plan and implement the main database tables, including:
-- admins
-- programs
-- gallery
-- volunteers
-- contacts
-
-### Phase 9: PHP and MySQL Integration
-Connect the PHP backend to the database and implement data-driven content.
-
-### Phase 10: Admin Authentication
-Create a secure login flow and protected admin sessions.
-
-### Phase 11: Admin Dashboard and CRUD
-Implement create, read, update, and delete operations for programs, gallery items, and volunteer records.
-
-### Phase 12: Security and Error Handling
-Validate inputs, protect admin access, and handle invalid or missing form data safely.
-
-### Phase 13: Testing
-Test responsive layouts, accessibility, forms, database connections, and admin flows.
-
-### Phase 14: Documentation and Deployment
-Prepare the final documentation and deployment instructions.
-
-## Delivery Standard
-The project should be considered complete when the public website, admin management screens, authentication, database integration, and core security and testing requirements are all working together correctly.
-
-
-Good morning, Guru. 🌤️
-
-Yes, I know how you work. You need a roadmap that says **what to do, in what order, what each step produces, and what “done” actually means**, not “Phase 1: develop website” followed by divine intervention.
-
-Here is the detailed roadmap I’d use for **My Next Level**.
-
-# My Next Level
-
-## Full-Stack Development Roadmap
-
-**Stack:** HTML5 · CSS3 · JavaScript · PHP · MySQL
-**Project type:** Full-stack charity organization web application
+**Project Type:** Full-Stack Charity & Community Web Application
+**Stack:** HTML, CSS, JavaScript, PHP, MySQL, XAMPP
+**Current Status:** Core application complete and presentation-ready
 
 ---
 
-# PHASE 0: PROJECT FOUNDATION
+## Phase 0 — Project Foundation
 
-### 0.1 Define the Project
+**Status: COMPLETE**
 
-* [x] Confirm project name: **My Next Level**
-* [x] Write the project problem statement
-* [x] Define the purpose of the application
-* [x] Define project objectives
-* [x] Define target users
-* [x] Define system scope
-* [x] Identify features that are **MVP** versus future features
-* [ ] Identify technical requirements from the school
-
-### Deliverable
-
-A clear project specification.
-
-### Done when
-
-You can explain in 1–2 minutes:
-
-> What is My Next Level, who is it for, what problem does it solve, and what does the system allow users to do?
+* [x] Define project name: My Next Level
+* [x] Define project purpose
+* [x] Define target organisation
+* [x] Define project scope
+* [x] Select technology stack
+* [x] Set up local development environment with XAMPP
+* [x] Create project repository/folder structure
 
 ---
 
-# PHASE 1: REQUIREMENTS ANALYSIS
+## Phase 1 — Requirements Analysis
 
-Before touching code.
+**Status: COMPLETE**
 
-Because changing requirements after you've built half the backend is one of humanity's less impressive traditions.
+### Organisation Needs
 
-### 1.1 Functional Requirements
+* [x] Establish online presence
+* [x] Communicate mission and activities
+* [x] Showcase programmes and activities
+* [x] Display gallery content
+* [x] Receive donations
+* [x] Recruit volunteers
+* [x] Receive sponsorship requests
+* [x] Receive community reports
+* [x] Receive contact messages
+* [x] Provide administrators with content management tools
 
-Document what the system must do.
+### Target Users
 
-#### Public users
-
-* [x] View homepage
-* [x] Learn about the organization
-* [x] View programs
-* [x] View gallery
-* [x] View ways to get involved
-* [x] Submit volunteer information
-* [x] Submit contact/inquiry information
-* [x] Navigate between pages
-
-#### Administrators
-
-* [x] Log in
-* [x] Access dashboard
-* [x] View system overview
-* [x] Add programs
-* [x] Edit programs
-* [x] Delete programs
-* [ ] Add gallery items
-* [ ] Edit gallery items
-* [ ] Delete gallery items
-* [x] View volunteers
-* [x] Manage volunteer records
-* [x] Log out
-
-### 1.2 Non-functional Requirements
-
-Define:
-
-* [x] Responsive design
-* [ ] Accessibility
-* [x] Usability
-* [ ] Performance
-* [ ] Security
-* [x] Maintainability
-* [ ] Data integrity
-
-### Deliverable
-
-**Requirements Specification**
+* [x] Donors
+* [x] Volunteers
+* [x] Sponsors
+* [x] Community members/reporters
+* [x] General website visitors
+* [x] Administrators
 
 ---
 
-# PHASE 2: INFORMATION ARCHITECTURE
-
-Now decide what exists in the application and how everything connects.
-
-## 2.1 Site Map
-
-```text
-MY NEXT LEVEL
-│
-├── Home
-│
-├── About
-│
-├── Programs
-│
-├── Gallery
-│
-├── Get Involved
-│   └── Volunteer
-│
-├── Contact
-│
-└── Admin
-    │
-    ├── Login
-    │
-    └── Dashboard
-        ├── Overview
-        ├── Programs
-        ├── Gallery
-        └── Volunteers
-```
-
-### 2.2 Define Navigation
-
-* [x] Desktop navigation
-* [ ] Mobile navigation
-* [x] Footer navigation
-* [x] Admin navigation
-* [x] CTA links
-* [ ] Breadcrumbs where useful
-
-### Deliverable
-
-**Final sitemap + navigation structure**
-
----
-
-# PHASE 3: USER FLOWS
-
-Create flows before interfaces.
-
-### 3.1 Visitor Flow
-
-```text
-Home
- ↓
-Explore
- ├── About
- ├── Programs
- ├── Gallery
- ├── Get Involved
- │      ↓
- │   Volunteer
- │      ↓
- │   Submit Form
- │
- └── Contact
-        ↓
-     Contact Form
-```
-
-### 3.2 Admin Flow
-
-```text
-Admin Login
-     ↓
-Validate Credentials
-     ↓
-Dashboard
-     ↓
-Choose Management Area
- ├── Programs
- ├── Gallery
- └── Volunteers
-     ↓
-Perform Action
-     ↓
-Save/Update/Delete
-     ↓
-Database
-```
-
-### 3.3 Error Flows
-
-Don't forget the less glamorous part.
-
-Design what happens when:
-
-* [x] Login fails
-* [x] Required field is empty
-* [ ] Invalid email is entered
-* [x] Database connection fails
-* [ ] Record doesn't exist
-* [ ] Unauthorized user accesses `/admin`
-* [ ] Image upload fails
-* [ ] Delete operation fails
-* [x] Form submission fails
-
-### Deliverable
-
-**User Flow Document**
-
----
-
-# PHASE 4: UI/UX DESIGN
-
-## 4.1 Design System
-
-Define:
-
-* [x] Primary color
-* [x] Secondary color
-* [x] Background colors
-* [x] Text colors
-* [x] Error/success colors
-* [x] Typography
-* [x] Font sizes
-* [x] Spacing system
-* [x] Border radius
-* [x] Shadows
-* [x] Buttons
-* [x] Form fields
-* [x] Cards
-* [x] Navigation
-* [ ] Icons
-
-## 4.2 Wireframes
-
-Create low-fidelity wireframes for:
-
-* [ ] Home
-* [ ] About
-* [ ] Programs
-* [ ] Gallery
-* [ ] Get Involved
-* [ ] Contact
-* [ ] Admin Login
-* [ ] Admin Dashboard
-* [ ] Programs Management
-* [ ] Gallery Management
-* [ ] Volunteers Management
-
-## 4.3 High-Fidelity Designs
-
-Turn the wireframes into final designs.
-
-### Responsive breakpoints
-
-At minimum:
-
-```text
-Mobile
-↓
-Tablet
-↓
-Desktop
-```
-
-Test awkward widths too. Websites don't only exist at 1440px because Figma likes round numbers.
-
-### Deliverable
-
-**Complete UI design**
-
----
-
-# PHASE 5: DEVELOPMENT ENVIRONMENT
-
-Now we touch code.
-
-### 5.1 Install/Configure
-
-* [x] VS Code
-* [x] XAMPP
-* [x] Apache
-* [x] MySQL
-* [x] PHP
-* [x] Git
-* [x] GitHub
-
-### 5.2 Create Repository
-
-```text
-my-next-level/
-```
-
-Initialize:
-
-```bash
-git init
-```
-
-Create initial commit.
-
-### 5.3 Establish Folder Structure
-
-For example:
-
-```text
-my-next-level/
-│
-├── admin/
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-├── database/
-├── includes/
-├── pages/
-├── index.php
-└── README.md
-```
-
-### Deliverable
-
-**Working local development environment + Git repository**
-
----
-
-# PHASE 6: FRONTEND FOUNDATION
-
-Build the reusable structure first.
-
-### 6.1 Global HTML/PHP Structure
-
-Create:
-
-* [x] Header
-* [x] Navigation
-* [x] Main content
-* [x] Footer
-
-If using PHP includes:
-
-```php
-<?php include 'includes/header.php'; ?>
-```
-
-and:
-
-```php
-<?php include 'includes/footer.php'; ?>
-```
-
-### 6.2 Global CSS
-
-Create:
-
-* [x] CSS reset/base
-* [x] Variables
-* [x] Typography
-* [x] Container
-* [x] Grid
-* [x] Flex utilities
-* [x] Buttons
-* [x] Forms
-* [x] Cards
-* [x] Responsive rules
-
-### 6.3 Global JavaScript
-
-Set up:
-
-* [ ] Mobile menu
-* [ ] Navigation interactions
-* [ ] Form validation utilities
-* [ ] UI feedback utilities
-
-### Deliverable
-
-**Reusable frontend foundation**
-
----
-
-# PHASE 7: PUBLIC WEBSITE
-
-Build the public pages **one at a time**.
-
-## 7.1 Home Page
-
-Build:
-
-* [ ] Navbar
-* [ ] Hero
-* [ ] Organization introduction
-* [ ] Mission/vision
-* [ ] Featured programs
-* [ ] Impact statistics
-* [ ] Gallery preview
-* [ ] Get involved CTA
-* [ ] Contact CTA
-* [ ] Footer
-
-Test:
-
-* [ ] Desktop
-* [ ] Tablet
-* [ ] Mobile
-
----
-
-## 7.2 About Page
-
-Build:
-
-* [ ] Organization story
-* [ ] Mission
-* [ ] Vision
-* [ ] Values
-* [ ] Team/about section if required
-* [ ] CTA
-
----
-
-## 7.3 Programs Page
-
-Build:
-
-* [x] Program cards
-* [x] Program descriptions
-* [x] Images
-* [ ] Program details
-* [x] CTA
-
-Initially these can use static data.
-
-Later PHP will make them database-driven.
-
----
-
-## 7.4 Gallery
-
-Build:
-
-* [x] Gallery grid
-* [x] Image cards
-* [ ] Image preview/lightbox if required
-* [ ] Responsive layout
-
----
-
-## 7.5 Get Involved
-
-Build:
-
-* [x] Volunteer information
-* [x] Volunteer form
-* [x] Participation options
-* [x] CTA
-
----
-
-## 7.6 Contact
-
-Build:
-
-* [x] Contact information
-* [x] Contact form
-* [x] Email field
-* [x] Message field
-* [x] Validation
-* [x] Success/error states
-
-### Deliverable
-
-**Complete static public website**
-
----
-
-# PHASE 8: JAVASCRIPT FUNCTIONALITY
-
-Now make the frontend actually behave.
-
-### 8.1 Navigation
-
-* [ ] Mobile menu
-* [ ] Menu open/close
-* [ ] Active navigation state
-
-### 8.2 Forms
-
-Implement:
-
-* [ ] Required-field validation
-* [ ] Email validation
-* [ ] Error messages
-* [ ] Success messages
-* [ ] Submit states
-
-### 8.3 Gallery
-
-If required:
-
-* [ ] Image modal
-* [ ] Next/previous controls
-* [ ] Close functionality
-
-### 8.4 Other interactions
-
-* [ ] FAQ accordion if included
-* [ ] Animations where useful
-* [ ] Scroll interactions where useful
-
-### Deliverable
-
-**Interactive frontend**
-
----
-
-# PHASE 9: DATABASE DESIGN
-
-Now we design the actual data layer.
-
-## 9.1 Identify Entities
-
-Likely entities:
-
-```text
-Admin
-Program
-Gallery Item
-Volunteer
-Contact Message
-```
-
-## 9.2 Design Tables
-
-Example:
-
-### `admins`
-
-```text
-id
-name
-email
-password
-created_at
-```
-
-### `programs`
-
-```text
-id
-title
-description
-image
-created_at
-updated_at
-```
-
-### `gallery`
-
-```text
-id
-title
-image
-description
-created_at
-```
-
-### `volunteers`
-
-```text
-id
-name
-email
-phone
-interest
-message
-status
-created_at
-```
-
-### `contacts`
-
-```text
-id
-name
-email
-subject
-message
-created_at
-```
-
-## 9.3 Relationships
-
-Determine whether relationships are required.
-
-For example:
-
-```text
-Admin
-  │
-  └── manages ──> Programs
-
-Admin
-  │
-  └── manages ──> Gallery
-
-Admin
-  │
-  └── manages ──> Volunteers
-```
-
-### Deliverable
-
-**Database schema + ERD + SQL file**
-
----
-
-# PHASE 10: PHP BACKEND FOUNDATION
-
-Create the backend infrastructure.
-
-### 10.1 Database Connection
-
-Create:
-
-```text
-includes/database.php
-```
-
-Establish:
-
-```text
-PHP
- ↓
-MySQL
-```
-
-Test:
-
-* [ ] Connection succeeds
-* [x] Connection failure handled properly
-
-### 10.2 Database Queries
-
-Implement safely using:
-
-* [x] Prepared statements
-* [x] Parameterized queries
-
-Avoid concatenating user input directly into SQL.
-
-### Deliverable
-
-**Working PHP ↔ MySQL connection**
-
----
-
-# PHASE 11: DYNAMIC PUBLIC WEBSITE
-
-Now replace static data with database data.
-
-## Programs
-
-```text
-MySQL
- ↓
-PHP
- ↓
-Programs Page
-```
-
-Implement:
-
-* [ ] Retrieve programs
-* [x] Display programs
-* [ ] Handle missing records
-* [ ] Handle database errors
-
-## Gallery
-
-Implement:
-
-* [ ] Retrieve gallery items
-* [x] Display images
-* [ ] Handle missing images
-
-## Volunteers
-
-Implement:
-
-```text
-Volunteer Form
- ↓
-JavaScript validation
- ↓
-PHP validation
- ↓
-MySQL
-```
-
-## Contact
-
-Implement the same pattern:
-
-```text
-Contact Form
- ↓
-PHP
- ↓
-MySQL
-```
-
-### Deliverable
-
-**Database-driven public website**
-
----
-
-# PHASE 12: ADMIN AUTHENTICATION
-
-This is where things stop being a pretty website and become a proper application.
-
-### 12.1 Login
-
-Build:
-
-* [x] Login form
-* [ ] Email validation
-* [ ] Password validation
-* [x] Credential verification
-* [x] Error handling
-
-### 12.2 Password Security
-
-Passwords must be hashed.
-
-PHP:
-
-```php
-password_hash()
-```
-
-Verification:
-
-```php
-password_verify()
-```
-
-Never store:
-
-```text
-password123
-```
-
-in the database.
-
-Humanity has suffered enough from that.
-
-### 12.3 Sessions
-
-Implement:
-
-* [x] Session creation
-* [x] Session checking
-* [x] Protected pages
+## Phase 2 — Information Architecture
+
+**Status: COMPLETE**
+
+### Public Website
+
+* [x] Home
+* [x] About
+* [x] Programmes
+* [x] Gallery
+* [x] Get Involved
+* [x] Donate
+* [x] Volunteer
+* [x] Sponsor
+* [x] Community Report
+* [x] Contact
+
+### Administration
+
+* [x] Login
+* [x] Dashboard
+* [x] Programmes
+* [x] Gallery
+* [x] Volunteers
+* [x] Sponsors
+* [x] Donations
+* [x] Community Reports
+* [x] Contact Messages
 * [x] Logout
-* [x] Session destruction
-
-### Deliverable
-
-**Working secure admin authentication**
 
 ---
 
-# PHASE 13: ADMIN DASHBOARD
+## Phase 3 — User Flows
 
-## 13.1 Dashboard
+**Status: COMPLETE**
 
-Display useful information such as:
-
-```text
-Programs:       8
-Gallery Items:  34
-Volunteers:     21
-Messages:       15
-```
-
-Build:
-
-* [x] Sidebar/navigation
-* [x] Dashboard cards
-* [ ] Recent activity
-* [x] Responsive layout
+* [x] Visitor browsing flow
+* [x] Programme discovery flow
+* [x] Donation flow
+* [x] Volunteer application flow
+* [x] Sponsorship flow
+* [x] Community reporting flow
+* [x] Contact flow
+* [x] Admin login flow
+* [x] Admin dashboard flow
+* [x] Programme management flow
+* [x] Gallery management flow
+* [x] Submission review flows
+* [x] Logout flow
 
 ---
 
-# PHASE 14: PROGRAM MANAGEMENT
+## Phase 4 — UI/UX Design
 
-Implement complete CRUD.
+**Status: MOSTLY COMPLETE**
 
-### Create
+* [x] Define visual direction
+* [x] Establish typography
+* [x] Establish colour system
+* [x] Design reusable components
+* [x] Design navigation
+* [x] Design cards
+* [x] Design forms
+* [x] Design buttons
+* [x] Design responsive layouts
+* [x] Design admin interface
+* [x] Apply accessibility-conscious form labels and semantics
+* [ ] Formal wireframe documentation
+* [ ] Formal high-fidelity design documentation
+* [ ] Comprehensive icon system documentation
 
-Admin can:
-
-* [x] Add program
-* [x] Enter title
-* [x] Enter description
-* [ ] Upload/select image
-
-### Read
-
-* [x] View all programs
-* [x] View program details
-
-### Update
-
-* [x] Edit program
-* [ ] Update image/content
-
-### Delete
-
-* [x] Delete program
-* [ ] Confirmation before deletion
-
-### Test
-
-```text
-Create → Database
-Read ← Database
-Update → Database
-Delete → Database
-```
+**Note:** The implemented interface is complete enough for the academic project. Formal design documentation was not required for the working application.
 
 ---
 
-# PHASE 15: GALLERY MANAGEMENT
+## Phase 5 — Project Setup
 
-Implement:
+**Status: COMPLETE**
 
-* [ ] Upload image
-* [ ] Add title/description
-* [ ] Display gallery items
-* [ ] Edit metadata
-* [ ] Delete image
-* [ ] Validate file type
-* [ ] Validate file size
-* [ ] Handle failed uploads
-
-### Important
-
-Don't blindly trust uploaded files.
-
-Validate:
-
-* MIME type
-* Extension
-* File size
-* Upload errors
+* [x] Create folder structure
+* [x] Configure XAMPP
+* [x] Configure Apache
+* [x] Configure MySQL
+* [x] Create project database
+* [x] Create shared PHP includes
+* [x] Create assets structure
+* [x] Create CSS structure
+* [x] Create JavaScript structure
 
 ---
 
-# PHASE 16: VOLUNTEER MANAGEMENT
+## Phase 6 — Frontend Foundation
 
-Admin should be able to:
+**Status: COMPLETE**
 
-* [x] View volunteers
-* [x] View individual volunteer details
-* [ ] Search/filter if required
-* [x] Change volunteer status
-* [x] Delete records where appropriate
-
-Possible statuses:
-
-```text
-Pending
-Reviewed
-Approved
-Rejected
-```
+* [x] Create global styles
+* [x] Create reusable header
+* [x] Create reusable footer
+* [x] Create navigation
+* [x] Create reusable JavaScript components
+* [x] Implement responsive navigation
+* [x] Implement mobile menu
+* [x] Establish responsive CSS
+* [x] Establish admin-specific styling
 
 ---
 
-# PHASE 17: CONTACT MANAGEMENT
+## Phase 7 — Public Website
 
-If contact submissions are stored in MySQL:
+**Status: COMPLETE**
 
-* [x] View messages
-* [x] View individual message
-* [ ] Mark as read
-* [x] Delete message
-* [x] Prevent unauthorized access
+* [x] Home page
+* [x] About page
+* [x] Programmes page
+* [x] Gallery page
+* [x] Get Involved page
+* [x] Donate page
+* [x] Volunteer page
+* [x] Sponsor page
+* [x] Community Report page
+* [x] Contact page
+* [x] Public navigation
+* [x] Shared header/footer
+* [x] Responsive layouts
 
 ---
 
-# PHASE 18: SECURITY
+## Phase 8 — JavaScript Functionality
 
-Do a dedicated security pass.
+**Status: COMPLETE**
 
-### Authentication
+* [x] Mobile navigation toggle
+* [x] Mobile menu accessibility state
+* [x] Dynamic shared components
+* [x] Basic client-side interaction
+* [x] Test JavaScript functionality
+* [x] Verify browser console for major errors
 
-* [ ] Password hashing
-* [x] Session protection
+---
+
+## Phase 9 — Database Design
+
+**Status: COMPLETE**
+
+Database: `my_next_level`
+
+* [x] Create `admins`
+* [x] Create `programs`
+* [x] Create `gallery`
+* [x] Create `volunteers`
+* [x] Create `donations`
+* [x] Create `sponsors`
+* [x] Create `community_reports`
+* [x] Create `contacts`
+* [x] Add programme relationship to volunteers
+* [x] Add donation archive functionality
+* [x] Test database connection
+* [x] Test database queries
+
+---
+
+## Phase 10 — PHP/MySQL Foundation
+
+**Status: COMPLETE**
+
+* [x] Create database connection
+* [x] Configure MySQL connection
+* [x] Set UTF-8 character encoding
+* [x] Create reusable PHP includes
+* [x] Implement database queries
+* [x] Implement form processing
+* [x] Implement prepared statements where appropriate
+* [x] Implement server-side form handling
+* [x] Test successful database operations
+* [x] Test failed database operations
+
+---
+
+## Phase 11 — Dynamic Public Website
+
+**Status: COMPLETE**
+
+* [x] Connect programmes to database
+* [x] Connect gallery to database
+* [x] Connect volunteer form
+* [x] Connect sponsor form
+* [x] Connect donation form
+* [x] Connect community report form
+* [x] Connect contact form
+* [x] Verify submitted records in database
+* [x] Verify public content displays correctly
+
+---
+
+## Phase 12 — Admin Authentication
+
+**Status: COMPLETE**
+
+* [x] Create admin table
+* [x] Create login page
+* [x] Authenticate admin credentials
+* [x] Hash passwords
+* [x] Verify passwords using `password_verify()`
+* [x] Create sessions
+* [x] Protect admin pages
+* [x] Redirect unauthenticated users
+* [x] Implement logout
+* [x] Test authentication flow
+
+### Deferred
+
+* [ ] Remember-me functionality
+* [ ] Password reset
+* [ ] Role-based access control
+* [ ] Session timeout improvements
+
+---
+
+## Phase 13 — Admin Dashboard
+
+**Status: COMPLETE**
+
+* [x] Create dashboard
+* [x] Display volunteer statistics
+* [x] Display donation statistics
+* [x] Display programme statistics
+* [x] Display sponsor statistics
+* [x] Display community report statistics
+* [x] Display contact message statistics
+* [x] Display pending items
+* [x] Display recent volunteer activity
+* [x] Display programme attention data
+* [x] Display donation overview
+* [x] Create admin sidebar navigation
+* [x] Apply shared admin styling
+* [x] Add responsive admin layout
+
+---
+
+## Phase 14 — Programme Management
+
+**Status: COMPLETE**
+
+* [x] Create programme
+* [x] Read/list programmes
+* [x] Edit programme
+* [x] Delete programme
+* [x] Store programme date
+* [x] Store programme location
+* [x] Store programme status
+* [x] Display programmes publicly
+* [x] Test CRUD functionality
+
+---
+
+## Phase 15 — Gallery Management
+
+**Status: COMPLETE**
+
+* [x] Upload gallery image
+* [x] Validate image type
+* [x] Validate image size
+* [x] Generate unique filenames
+* [x] Store uploaded image path
+* [x] Store image metadata in database
+* [x] Display gallery records in admin
+* [x] Edit gallery entries
+* [x] Delete gallery entries
+* [x] Delete associated physical image files
+* [x] Display gallery publicly
+* [x] Test upload/edit/delete flow
+
+---
+
+## Phase 16 — Volunteer Management
+
+**Status: COMPLETE**
+
+### Public
+
+* [x] Volunteer application form
+* [x] Programme selection
+* [x] Skills field
+* [x] Availability field
+* [x] Message field
+* [x] Store applications in database
+
+### Admin
+
+* [x] View volunteer applications
+* [x] Display programme association
+* [x] Display submission details
+* [x] Manage application status
+* [x] Test volunteer submission flow
+
+---
+
+## Phase 17 — Contact Management
+
+**Status: COMPLETE**
+
+### Public
+
+* [x] Contact form
+* [x] Name
+* [x] Email
+* [x] Subject
+* [x] Message
+* [x] Database storage
+
+### Admin
+
+* [x] View contact messages
+* [x] Display message details
+* [x] Test contact submission flow
+
+---
+
+## Phase 18 — Additional Engagement Systems
+
+**Status: COMPLETE**
+
+These features were added beyond the original roadmap.
+
+### Donations
+
+* [x] Donation form
+* [x] Store donor information
+* [x] Store donation amount
+* [x] Payment status
+* [x] Admin donation management
+* [x] Paid/pending/failed tracking
+* [x] Archive functionality
+* [x] Donation totals on dashboard
+
+### Sponsorship
+
+* [x] Sponsorship form
+* [x] Store sponsor information
+* [x] Store sponsorship type
+* [x] Admin sponsorship management
+* [x] Status tracking
+
+### Community Reports
+
+* [x] Community report form
+* [x] Store community information
+* [x] Store location
+* [x] Store need type
+* [x] Store description
+* [x] Store affected population
+* [x] Admin community report management
+* [x] Status tracking
+
+---
+
+## Phase 19 — Security
+
+**Status: PARTIALLY COMPLETE**
+
+### Implemented
+
+* [x] Password hashing
+* [x] Password verification
+* [x] Prepared statements for relevant database operations
+* [x] Session-based authentication
 * [x] Protected admin routes
-* [x] Logout functionality
-
-### Database
-
-* [x] Prepared statements
-* [x] Validate input
-* [x] Sanitize output where appropriate
-
-### Forms
-
-* [ ] Client-side validation
 * [x] Server-side validation
+* [x] Basic upload validation
+* [x] Random gallery filenames
 
-### Output
+### Deferred
 
-Protect against:
+* [ ] CSRF protection
+* [ ] Comprehensive upload hardening
+* [ ] Environment-variable database credentials
+* [ ] Advanced session security
+* [ ] Role-based access control
+* [ ] Production security audit
 
-* [x] SQL injection
-* [x] XSS
-* [x] Unauthorized admin access
-* [ ] Malicious file uploads
-
-### Credentials
-
-* [ ] Don't commit database passwords
-* [ ] Don't commit sensitive configuration
-* [ ] Add sensitive files to `.gitignore`
+**Reason:** These are production-hardening tasks rather than presentation-critical functionality.
 
 ---
 
-# PHASE 19: ERROR HANDLING
+## Phase 20 — Error Handling
 
-Test what happens when humans inevitably do something unexpected.
+**Status: PARTIALLY COMPLETE**
 
-Create proper handling for:
+### Implemented
 
-* [ ] Invalid URLs
-* [ ] Missing records
-* [ ] Failed database connections
-* [x] Failed SQL queries
-* [x] Invalid forms
-* [x] Invalid login
-* [ ] Unauthorized access
-* [ ] Missing images
-* [ ] Failed uploads
-* [x] Empty database
+* [x] Database connection failure handling
+* [x] Login failure handling
+* [x] Form processing failure handling
+* [x] Gallery upload failure handling
+* [x] Failed database insert cleanup
 
-Provide useful user-facing messages instead of exposing PHP/MySQL errors.
+### Deferred
 
----
-
-# PHASE 20: RESPONSIVENESS
-
-Test the entire application.
-
-### Mobile
-
-* [ ] 320px
-* [ ] 375px
-* [ ] 425px
-
-### Tablet
-
-* [ ] 768px
-* [ ] 834px
-
-### Desktop
-
-* [ ] 1024px
-* [ ] 1280px
-* [ ] 1440px
-* [ ] 1920px
-
-Check:
-
-* [ ] Navigation
-* [ ] Cards
-* [ ] Images
-* [ ] Forms
-* [ ] Tables
-* [ ] Dashboard
-* [ ] Buttons
-* [ ] Text
-* [ ] Spacing
-* [ ] Overflow
+* [ ] Comprehensive 404 handling
+* [ ] Global application error handler
+* [ ] Detailed missing-record handling
+* [ ] Production error logging
 
 ---
 
-# PHASE 21: ACCESSIBILITY
+## Phase 21 — Responsive Design & QA
 
-Check:
+**Status: COMPLETE FOR CORE REQUIREMENTS**
 
-* [ ] Semantic HTML
-* [ ] Proper headings
-* [ ] Form labels
-* [ ] Alt text
-* [ ] Keyboard navigation
-* [ ] Visible focus states
-* [ ] Sufficient color contrast
-* [ ] Buttons have meaningful labels
-* [ ] Links are distinguishable
-* [ ] Forms provide useful errors
+* [x] Desktop layout testing
+* [x] Mobile layout testing
+* [x] Responsive navigation
+* [x] Mobile menu
+* [x] Public page testing
+* [x] Admin layout testing
+* [x] Form testing
+* [x] Basic visual QA
+* [x] Browser console review
+* [x] Fix major responsive issues
 
----
+### Remaining Polish
 
-# PHASE 22: TESTING
-
-## Functional Testing
-
-| Feature           | Test                       |
-| ----------------- | -------------------------- |
-| Navigation        | Every link works           |
-| Registration/Form | Valid data submits         |
-| Validation        | Invalid data rejected      |
-| Login             | Correct credentials work   |
-| Login             | Wrong credentials rejected |
-| Programs          | CRUD works                 |
-| Gallery           | CRUD/upload works          |
-| Volunteers        | Records displayed          |
-| Contact           | Messages stored            |
-| Logout            | Session terminated         |
-
-## Database Testing
-
-* [ ] Insert
-* [ ] Select
-* [ ] Update
-* [ ] Delete
-* [ ] Constraints
-* [ ] Invalid data
-
-## UI Testing
-
-* [ ] Desktop
-* [ ] Tablet
-* [ ] Mobile
-* [ ] Different browsers
+* [ ] Minor visual refinements
+* [ ] Additional device/browser testing
 
 ---
 
-# PHASE 23: PERFORMANCE & CLEANUP
+## Phase 22 — Accessibility
 
-Before deployment:
+**Status: PARTIALLY COMPLETE**
 
-* [ ] Optimize images
-* [ ] Remove unused CSS
-* [ ] Remove unused JavaScript
-* [ ] Compress assets where appropriate
-* [ ] Check unnecessary database queries
-* [ ] Fix console errors
-* [ ] Fix PHP warnings
-* [ ] Remove debugging code
-* [ ] Clean folder structure
+* [x] Semantic HTML where appropriate
+* [x] Form labels
+* [x] Accessible mobile menu state
+* [x] ARIA attributes for mobile navigation
+* [x] Basic keyboard-friendly controls
+
+### Deferred
+
+* [ ] Full WCAG audit
+* [ ] Comprehensive keyboard testing
+* [ ] Full colour-contrast audit
+* [ ] Screen-reader testing
 
 ---
 
-# PHASE 24: DOCUMENTATION
+## Phase 23 — Functional Testing
 
-Prepare:
+**Status: COMPLETE**
 
-### Project Documentation
+### Public
 
-* [x] Introduction
-* [x] Problem statement
-* [x] Objectives
-* [x] Scope
-* [x] Requirements
-* [ ] System architecture
-* [ ] Database design
-* [ ] ER diagram
-* [x] User flows
-* [ ] Screenshots
-* [ ] Testing
-* [ ] Conclusion
+* [x] Navigation
+* [x] Mobile menu
+* [x] Programmes
+* [x] Gallery
+* [x] Volunteer form
+* [x] Sponsor form
+* [x] Donation form
+* [x] Community report form
+* [x] Contact form
 
-### Repository Documentation
+### Admin
+
+* [x] Login
+* [x] Logout
+* [x] Authentication protection
+* [x] Dashboard
+* [x] Programme CRUD
+* [x] Gallery management
+* [x] Volunteer management
+* [x] Sponsor management
+* [x] Donation management
+* [x] Community report management
+* [x] Contact message management
+
+---
+
+## Phase 24 — Performance & Code Cleanup
+
+**Status: PARTIALLY COMPLETE**
+
+* [x] Organise project structure
+* [x] Separate admin CSS
+* [x] Reuse shared components
+* [x] Remove obvious placeholder content
+* [x] Remove unfinished user-facing copy
+* [x] Remove unsupported community-report image upload field
+* [x] Perform presentation-readiness QA
+
+### Deferred
+
+* [ ] Full CSS optimisation
+* [ ] Image optimisation
+* [ ] Advanced caching
+* [ ] Performance profiling
+* [ ] Full code refactor
+
+---
+
+## Phase 25 — Documentation
+
+**Status: MOSTLY COMPLETE**
 
 * [x] README
-* [x] Installation instructions
-* [x] Database setup
-* [x] Admin setup
-* [x] Technologies
-* [x] Features
-* [x] Project structure
+* [x] Roadmap
+* [x] Site plan
+* [x] User flow documentation
+* [x] Emergency roadmap
+* [x] Project structure documentation
+* [x] Technology stack documentation
+
+### Deferred
+
+* [ ] Formal ERD diagram
+* [ ] Formal architecture diagram
+* [ ] Dedicated testing report
+* [ ] Screenshot documentation
+* [ ] Formal deployment documentation
 
 ---
 
-# PHASE 25: DEPLOYMENT
+## Phase 26 — Deployment
 
-If deployment is required:
+**Status: DEFERRED**
 
-* [ ] Choose hosting
-* [ ] Configure PHP
-* [ ] Configure MySQL
-* [ ] Upload project
-* [ ] Import database
-* [ ] Configure credentials
-* [ ] Test database connection
-* [ ] Test public website
-* [ ] Test admin dashboard
-* [ ] Test forms
-* [ ] Test authentication
-* [ ] Check HTTPS
-* [ ] Final security review
+The project is currently intended for local XAMPP presentation.
+
+* [x] Local Apache configuration
+* [x] Local MySQL configuration
+* [x] Local database connection
+* [ ] Production hosting
+* [ ] Production database
+* [ ] Domain configuration
+* [ ] HTTPS configuration
+* [ ] Production environment variables
+* [ ] Production security audit
 
 ---
 
-# PHASE 26: FINAL QA
+# Final Project Status
 
-Run the entire application as three different people:
+## Core Application
 
-### Visitor
+**COMPLETE**
 
-> "I've never seen this website before."
+The application currently provides:
 
-Can I understand it?
+* Public-facing charity/community website
+* Dynamic programme management
+* Dynamic gallery management
+* Volunteer applications
+* Sponsorship applications
+* Donations
+* Community reporting
+* Contact messaging
+* Admin authentication
+* Admin dashboard
+* Database-backed content
+* CRUD functionality
+* Responsive navigation
+* Mobile support
 
-Can I navigate it?
+## Presentation Readiness
 
-Can I volunteer?
+**READY**
 
-Can I contact the organization?
+Final checks:
 
-### Volunteer
-
-> "I want to participate."
-
-Can I find the relevant information?
-
-Can I submit my details?
-
-Do I know whether submission succeeded?
-
-### Administrator
-
-> "I need to manage this organization."
-
-Can I log in?
-
-Can I manage programs?
-
-Can I manage gallery content?
-
-Can I see volunteers?
-
-Can I log out?
-
-If any answer is no, the application isn't finished. It is merely dressed for the presentation.
+* [x] Public navigation works
+* [x] Mobile menu works
+* [x] Public forms work
+* [x] Database receives submissions
+* [x] Admin authentication works
+* [x] Admin routes are protected
+* [x] Admin CRUD works
+* [x] Dashboard statistics work
+* [x] Gallery works
+* [x] Placeholder content removed
+* [x] Major responsive issues addressed
+* [x] Core QA completed
 
 ---
 
-# FINAL DEVELOPMENT ORDER
+# Deferred / Future Development
 
-This is the **actual sequence I'd recommend you follow**:
+The following items are intentionally outside the current presentation scope:
 
-```text
-01  Project Definition
-        ↓
-02  Requirements
-        ↓
-03  Site Map
-        ↓
-04  User Flows
-        ↓
-05  UI/UX Design
-        ↓
-06  Project Setup
-        ↓
-07  HTML/CSS Foundation
-        ↓
-08  Public Pages
-        ↓
-09  JavaScript Interactions
-        ↓
-10  Database Design
-        ↓
-11  PHP + MySQL Connection
-        ↓
-12  Dynamic Public Content
-        ↓
-13  Admin Authentication
-        ↓
-14  Admin Dashboard
-        ↓
-15  Programs CRUD
-        ↓
-16  Gallery CRUD
-        ↓
-17  Volunteer Management
-        ↓
-18  Contact Management
-        ↓
-19  Security
-        ↓
-20  Error Handling
-        ↓
-21  Responsive Testing
-        ↓
-22  Accessibility
-        ↓
-23  Functional Testing
-        ↓
-24  Documentation
-        ↓
-25  Deployment
-        ↓
-26  Final QA
-        ↓
-       DONE
-```
+1. CSRF protection
+2. Production-grade upload security
+3. Environment-based credentials
+4. Role-based admin access
+5. Password recovery
+6. Remember-me authentication
+7. Visitor analytics
+8. Advanced search/filtering
+9. Gallery lightbox
+10. FAQ section
+11. Advanced animations
+12. Full accessibility audit
+13. Performance optimisation
+14. Formal ERD and architecture diagrams
+15. Production deployment
 
-## The rule for this project
+These are **future improvements**, not blockers to the current academic project.
 
-**Don't move to the next phase because you're bored with the current one. Move when the current phase has a defined deliverable and passes its "done" criteria.**
+---
 
-For your particular working style, I'd also keep **three separate checklists**:
+# Project Completion Assessment
 
-* **BUILD**: things you need to create.
-* **LEARN**: concepts you need to understand to build them.
-* **TEST**: things you need to verify.
+**Core development:** Complete
+**Database integration:** Complete
+**Admin system:** Complete
+**Public functionality:** Complete
+**CRUD functionality:** Complete
+**Responsive functionality:** Complete for core requirements
+**Security:** Partially complete
+**Accessibility:** Partially complete
+**Documentation:** Mostly complete
+**Production deployment:** Deferred
+**Presentation:** Ready
 
-That lets you learn JavaScript/PHP through the actual project without turning My Next Level into another enormous theoretical course.
-
-## Backend
-1. Set up XAMPP
-        ↓
-2. Create MySQL database
-        ↓
-3. Design database tables
-        ↓
-4. Create PHP project structure
-        ↓
-5. Create database connection
-        ↓
-6. Test PHP ↔ MySQL connection
-        ↓
-7. Create reusable PHP includes
-        ↓
-8. Convert static HTML → PHP pages
-        ↓
-9. Build admin authentication
-        ↓
-10. Build Programs CRUD
-        ↓
-11. Build Gallery CRUD
-        ↓
-12. Build Volunteer management
-        ↓
-13. Build Donations
-        ↓
-14. Build Sponsors
-        ↓
-15. Build Community Reports
-        ↓
-16. Build Contact submissions
-        ↓
-17. Build dashboard statistics
-        ↓
-18. Security + validation
-        ↓
-19. Testing
+**Overall:** The core My Next Level application is complete and functional. Remaining roadmap items are primarily production hardening, formal documentation, accessibility refinement, performance work, and optional UI polish.

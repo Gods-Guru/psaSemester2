@@ -1,0 +1,5 @@
+/* Homepage-specific styles live here. Base layout remains in index.css. */
+
+[aria-labelledby="home-hero-heading"] {
+    isolation: isolate;
+}

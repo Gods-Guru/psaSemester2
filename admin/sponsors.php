@@ -75,11 +75,15 @@ if (!$result) {
     <title>Sponsors | My Next Level</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 
 <body>
 
-    <main>
+    <div class="admin-layout">
+        <?php require_once "admin-navigation.php"; ?>
+
+        <main class="admin-main">
 
         <h1>Manage Sponsors</h1>
 
@@ -232,7 +236,8 @@ if (!$result) {
 
         <?php endif; ?>
 
-    </main>
+        </main>
+    </div>
 
 </body>
 </html>

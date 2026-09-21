@@ -77,11 +77,15 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Programme | My Next Level</title>
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 
-<body>
+<body class="admin-programs">
 
-<main>
+    <div class="admin-layout">
+        <?php require_once "admin-navigation.php"; ?>
+
+        <main class="admin-main">
 
     <h1>Edit Programme</h1>
 
@@ -168,7 +172,8 @@ $stmt->close();
         <a href="programs.php">Back to Programmes</a>
     </p>
 
-</main>
+        </main>
+    </div>
 
 </body>
 </html>

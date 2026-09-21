@@ -1,0 +1,5 @@
+/* Sponsor page-specific styles. */
+
+[aria-labelledby="sponsor-heading"] form {
+    border-top: 4px solid var(--primary);
+}

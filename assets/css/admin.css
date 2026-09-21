@@ -1,0 +1,219 @@
+/* =========================================
+   ADMIN DASHBOARD
+   ========================================= */
+
+.admin-layout {
+    min-height: 100vh;
+    display: flex;
+    background: var(--bg);
+}
+
+/* Sidebar */
+
+.admin-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: var(--secondary);
+    color: var(--white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1.5rem 1rem;
+    z-index: 100;
+}
+
+.admin-sidebar h1 {
+    color: var(--white);
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    padding: 0 0.75rem;
+}
+
+.admin-sidebar nav {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-sidebar nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+}
+
+.admin-sidebar nav li {
+    width: 100%;
+}
+
+.admin-sidebar nav li a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0.75rem;
+    border-radius: 10px;
+    color: var(--white);
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.admin-sidebar nav li a:hover,
+.admin-sidebar nav li a:focus {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    opacity: 1;
+}
+
+/* Dashboard content */
+
+.admin-main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    max-width: none;
+    padding: 2rem;
+}
+
+/* Dashboard header */
+
+.admin-header {
+    margin-bottom: 2rem;
+    background: none;
+}
+
+.admin-header h2 {
+    margin-bottom: 0.4rem;
+}
+
+/* Statistics */
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.admin-stat-card {
+    background: var(--white);
+    border: 1px solid rgba(51, 51, 51, 0.12);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.admin-stat-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.admin-stat-card p {
+    color: var(--secondary);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.admin-stat-card small {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--muted);
+}
+
+/* Dashboard sections */
+
+.admin-section {
+    background: var(--white);
+    border: 1px solid rgba(51, 51, 51, 0.12);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.admin-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Tables */
+
+.admin-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-section th,
+.admin-section td {
+    padding: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+.admin-section th {
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+.admin-section td {
+    color: var(--muted);
+}
+
+/* Overview cards inside sections */
+
+.admin-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.admin-overview-grid article {
+    box-shadow: none;
+    padding: 1rem;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .admin-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-overview-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-layout {
+        display: block;
+    }
+
+    .admin-sidebar {
+        position: static;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .admin-sidebar nav ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .admin-stats,
+    .admin-overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-section {
+        padding: 1rem;
+    }
+}

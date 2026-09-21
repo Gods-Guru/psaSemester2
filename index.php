@@ -1,3 +1,65 @@
+<?php
+require_once "includes/database.php";
+
+$homepage_programs = [];
+$programs_query = $conn->query(
+    "SELECT id, title, description, image, location, program_date, status
+     FROM programs
+     ORDER BY
+        CASE status
+            WHEN 'ongoing' THEN 1
+            WHEN 'upcoming' THEN 2
+            WHEN 'completed' THEN 3
+            ELSE 4
+        END,
+        program_date ASC,
+        created_at DESC
+     LIMIT 3"
+);
+
+if ($programs_query) {
+    while ($program = $programs_query->fetch_assoc()) {
+        $homepage_programs[] = $program;
+    }
+}
+
+$homepage_gallery = [];
+$gallery_query = $conn->query(
+    "SELECT title, image, description, created_at
+     FROM gallery
+     ORDER BY created_at DESC
+     LIMIT 3"
+);
+
+if ($gallery_query) {
+    while ($gallery_item = $gallery_query->fetch_assoc()) {
+        $homepage_gallery[] = $gallery_item;
+    }
+}
+
+$homepage_metrics = [
+    "programmes" => 0,
+    "volunteer_applications" => 0,
+    "community_reports" => 0,
+    "gallery_stories" => 0
+];
+
+$metric_queries = [
+    "programmes" => "SELECT COUNT(*) AS total FROM programs",
+    "volunteer_applications" => "SELECT COUNT(*) AS total FROM volunteers",
+    "community_reports" => "SELECT COUNT(*) AS total FROM community_reports",
+    "gallery_stories" => "SELECT COUNT(*) AS total FROM gallery"
+];
+
+foreach ($metric_queries as $metric => $query) {
+    $metric_result = $conn->query($query);
+
+    if ($metric_result) {
+        $homepage_metrics[$metric] = (int) $metric_result->fetch_assoc()["total"];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +68,17 @@
     <title>My Next Level | Charity Organisation</title>
     <meta name="description" content="My Next Level charity organisation website landing page." />
     <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 </head>
-<body>
+<body class="public-site">
     <site-header></site-header>
 
     <main>
         <section aria-labelledby="home-hero-heading">
             <div>
-                <p>My Next Level</p>
+                <p style="color: #fff;">My Next Level</p>
                 <h1 id="home-hero-heading">Helping communities move forward with support, care and opportunity.</h1>
                 <p>My Next Level is a charity organisation focused on creating a stronger digital presence to connect donors, sponsors, volunteers and communities in need.</p>
                 <div>
@@ -22,7 +87,7 @@
                 </div>
             </div>
             <div>
-                <img src="assets/images/image4.jpg" alt="Placeholder hero image for My Next Level organisation activities." />
+                <img src="assets/images/image4.jpg" alt="Community support activity from My Next Level." />
             </div>
         </section>
 
@@ -33,16 +98,16 @@
             </div>
             <div>
                 <article>
-                    <h3>Mission</h3>
-                    <p>[Mission statement placeholder to be supplied later.]</p>
+                    <h3>Community care</h3>
+                    <p>Supporting communities through care, opportunity and practical action.</p>
                 </article>
                 <article>
-                    <h3>Vision</h3>
-                    <p>[Vision statement placeholder to be supplied later.]</p>
+                    <h3>Connection</h3>
+                    <p>Connecting donors, sponsors, volunteers and communities in need.</p>
                 </article>
                 <article>
-                    <h3>Goals</h3>
-                    <p>[Goals placeholder to be supplied later.]</p>
+                    <h3>Opportunity</h3>
+                    <p>Creating pathways for people to take part in meaningful community support.</p>
                 </article>
             </div>
             <p><a href="pages/about.php">Learn more about My Next Level</a></p>
@@ -55,31 +120,39 @@
                 <p>Explore current programme areas and upcoming initiatives designed to support community care and opportunity.</p>
             </div>
 
-            <div class="programs-list">
-                <article class="program-card">
-                    <img src="assets/images/image1.jpg" alt="Programme placeholder image one." />
-                    <h3>Programme One</h3>
-                    <p>[Programme description placeholder.]</p>
-                    <p><strong>Status:</strong> [Current / Upcoming / Ongoing]</p>
-                    <a href="pages/programs.php">Read more</a>
-                </article>
+            <?php if ($homepage_programs): ?>
+                <div class="programs-list">
+                    <?php foreach ($homepage_programs as $program): ?>
+                        <article class="program-card">
+                            <?php if (!empty($program["image"])): ?>
+                                <img
+                                    src="<?php echo htmlspecialchars($program["image"]); ?>"
+                                    alt="<?php echo htmlspecialchars($program["title"]); ?>"
+                                />
+                            <?php endif; ?>
 
-                <article class="program-card">
-                    <img src="assets/images/image2.jpg" alt="Programme placeholder image two." />
-                    <h3>Programme Two</h3>
-                    <p>[Programme description placeholder.]</p>
-                    <p><strong>Status:</strong> [Current / Upcoming / Ongoing]</p>
-                    <a href="pages/programs.php">Read more</a>
-                </article>
+                            <h3><?php echo htmlspecialchars($program["title"]); ?></h3>
+                            <p><?php echo htmlspecialchars($program["description"]); ?></p>
 
-                <article class="program-card">
-                    <img src="assets/images/image3.jpg" alt="Programme placeholder image three." />
-                    <h3>Programme Three</h3>
-                    <p>[Programme description placeholder.]</p>
-                    <p><strong>Status:</strong> [Current / Upcoming / Ongoing]</p>
-                    <a href="pages/programs.php">Read more</a>
-                </article>
-            </div>
+                            <?php if (!empty($program["status"])): ?>
+                                <p><strong>Status:</strong> <?php echo htmlspecialchars($program["status"]); ?></p>
+                            <?php endif; ?>
+
+                            <?php if (!empty($program["program_date"])): ?>
+                                <p><strong>Date:</strong> <?php echo htmlspecialchars($program["program_date"]); ?></p>
+                            <?php endif; ?>
+
+                            <?php if (!empty($program["location"])): ?>
+                                <p><strong>Location:</strong> <?php echo htmlspecialchars($program["location"]); ?></p>
+                            <?php endif; ?>
+
+                            <a href="pages/programs.php">View programmes</a>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>No programmes are available at the moment.</p>
+            <?php endif; ?>
         </section>
 
         <section aria-labelledby="impact-heading">
@@ -89,20 +162,20 @@
             </div>
             <div>
                 <article>
-                    <h3>0</h3>
-                    <p>Communities reached</p>
-                </article>
-                <article>
-                    <h3>[Number]</h3>
-                    <p>People helped</p>
-                </article>
-                <article>
-                    <h3>[Number]</h3>
+                    <h3><?php echo $homepage_metrics["programmes"]; ?></h3>
                     <p>Programmes</p>
                 </article>
                 <article>
-                    <h3>[Number]</h3>
-                    <p>Volunteers</p>
+                    <h3><?php echo $homepage_metrics["volunteer_applications"]; ?></h3>
+                    <p>Volunteer applications</p>
+                </article>
+                <article>
+                    <h3><?php echo $homepage_metrics["community_reports"]; ?></h3>
+                    <p>Community reports</p>
+                </article>
+                <article>
+                    <h3><?php echo $homepage_metrics["gallery_stories"]; ?></h3>
+                    <p>Gallery stories</p>
                 </article>
             </div>
         </section>
@@ -111,22 +184,23 @@
             <div>
                 <p>Gallery</p>
                 <h2 id="gallery-preview-heading">Moments of support and connection.</h2>
-                <p>Placeholder gallery content for community outreach, support work and engagement activities.</p>
+                <p>Recent stories from community outreach, support work and engagement activities.</p>
             </div>
-            <div class="gallery-grid">
-                <figure>
-                    <img src="assets/images/image1.jpg" alt="Placeholder gallery image one." />
-                    <figcaption>Community support</figcaption>
-                </figure>
-                <figure>
-                    <img src="assets/images/image2.jpg" alt="Placeholder gallery image two." />
-                    <figcaption>Volunteer engagement</figcaption>
-                </figure>
-                <figure>
-                    <img src="assets/images/image3.jpg" alt="Placeholder gallery image three." />
-                    <figcaption>Outreach activity</figcaption>
-                </figure>
-            </div>
+            <?php if ($homepage_gallery): ?>
+                <div class="gallery-grid">
+                    <?php foreach ($homepage_gallery as $gallery_item): ?>
+                        <figure>
+                            <img
+                                src="<?php echo htmlspecialchars($gallery_item["image"]); ?>"
+                                alt="<?php echo htmlspecialchars($gallery_item["title"]); ?>"
+                            />
+                            <figcaption><?php echo htmlspecialchars($gallery_item["title"]); ?></figcaption>
+                        </figure>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>No gallery stories are available at the moment.</p>
+            <?php endif; ?>
             <p><a href="pages/gallery.php">View gallery</a></p>
         </section>
 

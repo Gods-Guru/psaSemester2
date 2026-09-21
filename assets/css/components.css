@@ -1,0 +1,380 @@
+/* Shared public-page surfaces and form primitives. */
+
+.public-page {
+	--public-line: rgba(15, 0, 130, 0.14);
+	--public-soft: #f4f5f8;
+	--public-shadow: 0 10px 28px rgba(15, 0, 130, 0.08);
+}
+
+.public-site {
+	background: var(--bg);
+	color: var(--text);
+}
+
+.public-site site-header {
+	display: block;
+}
+
+.public-site site-header > header {
+	background: rgba(15, 0, 130, 0.96);
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.public-site site-header > header nav {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	position: static;
+	width: auto;
+	height: auto;
+}
+
+.public-site site-header > header nav > a {
+	color: var(--white);
+	font-size: 1.2rem;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+}
+
+.public-site site-header > header nav > a:first-letter {
+	color: var(--primary);
+}
+
+.public-site site-header > header nav ul {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1.1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.public-site site-header > header nav li a {
+	color: var(--white);
+	opacity: 0.9;
+	font-weight: 600;
+}
+
+.public-site site-header > header nav li a:hover,
+.public-site site-header > header nav li a:focus,
+.public-site site-header > header nav li a:focus-visible {
+	color: var(--primary);
+	opacity: 1;
+}
+
+.public-site site-header > header nav button {
+	display: none;
+	background: var(--primary);
+	color: var(--white);
+	border: none;
+	border-radius: 10px;
+	padding: 0.7rem 0.9rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.public-site site-header > header nav ul.is-open {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.8rem;
+}
+
+.public-page > section {
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+.public-page .public-hero {
+	position: relative;
+	overflow: hidden;
+	max-width: 980px;
+	padding: clamp(2.25rem, 7vw, 4.75rem) clamp(1.5rem, 6vw, 4.5rem);
+	background: var(--white);
+	border: 1px solid var(--public-line);
+	border-left: 8px solid var(--primary);
+	border-radius: 6px 24px 24px 6px;
+	box-shadow: var(--public-shadow);
+}
+
+.public-page .public-hero::after {
+	content: "";
+	position: absolute;
+	right: -4rem;
+	bottom: -5rem;
+	width: 13rem;
+	height: 13rem;
+	border: 20px solid rgba(255, 83, 16, 0.1);
+	border-radius: 50%;
+}
+
+.public-page .public-hero > * {
+	position: relative;
+	z-index: 1;
+}
+
+.public-page .public-hero > p:first-child {
+	margin-bottom: 0.8rem;
+	color: var(--primary);
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.public-page .public-hero h1 {
+	max-width: 780px;
+	margin-bottom: 1rem;
+	color: var(--secondary);
+	font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.public-page .public-hero > p:last-child {
+	max-width: 680px;
+	color: var(--muted);
+	font-size: 1.05rem;
+}
+
+.public-page .public-section {
+	padding: 2rem;
+}
+
+.public-page .public-section h2,
+.public-page .public-form-section h2 {
+	margin-bottom: 1rem;
+	color: var(--secondary);
+	font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+
+.public-page .public-card-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.public-page .public-card {
+	min-height: 180px;
+	padding: 1.5rem;
+	background: var(--white);
+	border: 1px solid var(--public-line);
+	border-radius: 4px;
+	box-shadow: var(--public-shadow);
+}
+
+.public-page .public-card h2,
+.public-page .public-card h3 {
+	margin-bottom: 0.7rem;
+	color: var(--secondary);
+}
+
+.public-page .public-card a,
+.public-page .public-form button,
+.public-page .public-actions a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 46px;
+	padding: 0.75rem 1.15rem;
+	border: 2px solid var(--primary);
+	border-radius: 6px;
+	background: var(--primary);
+	color: var(--white);
+	font-weight: 800;
+	text-decoration: none;
+}
+
+.public-page .public-card a:hover,
+.public-page .public-card a:focus-visible,
+.public-page .public-form button:hover,
+.public-page .public-form button:focus-visible,
+.public-page .public-actions a:hover,
+.public-page .public-actions a:focus-visible {
+	background: #e94708;
+	border-color: #e94708;
+}
+
+.public-page .public-form-section {
+	padding: 0;
+}
+
+.public-page .public-form-wrapper {
+	width: min(100%, 850px);
+	margin: 0 auto;
+}
+
+.public-page .public-form {
+	display: grid;
+	gap: 1.15rem;
+	max-width: none;
+	margin: 0;
+	padding: clamp(1.25rem, 4vw, 2.25rem);
+	background: var(--white);
+	border: 1px solid var(--public-line);
+	border-top: 4px solid var(--secondary);
+	border-radius: 8px 8px 18px 18px;
+	box-shadow: var(--public-shadow);
+}
+
+.public-page .public-form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.1rem 1.25rem;
+}
+
+.public-page .public-form-field {
+	min-width: 0;
+}
+
+.public-page .public-form-field-full {
+	grid-column: 1 / -1;
+}
+
+.public-page .public-form label {
+	display: block;
+	margin-bottom: 0.45rem;
+	color: var(--secondary);
+	font-weight: 700;
+}
+
+.public-page .public-form input,
+.public-page .public-form textarea,
+.public-page .public-form select {
+	width: 100%;
+	min-height: 48px;
+	padding: 0.75rem 0.85rem;
+	border: 1px solid rgba(15, 0, 130, 0.2);
+	border-radius: 8px;
+	background: var(--white);
+}
+
+.public-page .public-form fieldset {
+	padding: 1rem 1.1rem;
+	border: 1px solid rgba(15, 0, 130, 0.16);
+	border-radius: 10px;
+	background: #fafbff;
+}
+
+.public-page .public-form legend {
+	padding: 0 0.5rem;
+	color: var(--secondary);
+	font-weight: 800;
+}
+
+.public-page .public-form-option {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.85rem 0.9rem;
+	border: 1px solid rgba(15, 0, 130, 0.12);
+	border-radius: 8px;
+	background: var(--white);
+	color: var(--secondary);
+	font-weight: 600;
+}
+
+.public-page .public-form-option input {
+	width: auto;
+	min-height: 0;
+	margin: 0;
+}
+
+.public-page .public-form textarea {
+	min-height: 140px;
+	resize: vertical;
+}
+
+.public-page .public-form input:focus,
+.public-page .public-form textarea:focus,
+.public-page .public-form select:focus,
+.public-page .public-form input:focus-visible,
+.public-page .public-form textarea:focus-visible,
+.public-page .public-form select:focus-visible {
+	outline: 3px solid rgba(255, 83, 16, 0.22);
+	outline-offset: 1px;
+	border-color: var(--primary);
+}
+
+.public-page .public-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.85rem;
+}
+
+.public-page .public-actions .secondary {
+	background: transparent;
+	color: var(--secondary);
+}
+
+.public-page .public-message {
+	padding: 0.9rem 1rem;
+	border: 1px solid;
+	border-radius: 8px;
+	font-weight: 650;
+}
+
+@media (max-width: 640px) {
+	.public-site site-header > header nav {
+		flex-wrap: wrap;
+	}
+
+	.public-site site-header > header nav ul {
+		display: none;
+	}
+
+	.public-site site-header > header nav button {
+		display: inline-block;
+	}
+}
+
+.public-page .public-success {
+	border-color: #79bda5;
+	background: #edf8f3;
+	color: #145d45;
+}
+
+.public-page .public-error {
+	border-color: #d48a8a;
+	background: #fff2f2;
+	color: #8b2525;
+}
+
+@media (max-width: 700px) {
+	.public-page .public-hero {
+		border-left-width: 5px;
+		border-radius: 4px 16px 16px 4px;
+	}
+
+	.public-page .public-section {
+		padding: 1.25rem;
+	}
+
+	.public-page .public-card-grid,
+	.public-page .public-form-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.public-page .public-form-field-full {
+		grid-column: auto;
+	}
+}
+
+@media (max-width: 400px) {
+	.public-page .public-form {
+		padding: 1rem;
+	}
+
+	.public-page .public-actions a,
+	.public-page .public-form button {
+		width: 100%;
+	}
+}

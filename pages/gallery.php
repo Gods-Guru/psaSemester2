@@ -30,21 +30,29 @@ if (!$result) {
     >
 
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/gallery.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 
-<body>
+<body class="public-site">
 
     <site-header></site-header>
 
-    <main>
+    <main class="public-page gallery-page">
 
-        <section aria-labelledby="gallery-heading">
+        <section class="public-hero gallery-hero" aria-labelledby="gallery-heading">
 
+            <p>Gallery</p>
             <h1 id="gallery-heading">Gallery</h1>
 
             <p>
                 Explore moments from our programmes and community activities.
             </p>
+
+        </section>
+
+        <section class="public-section gallery-content" aria-label="Gallery entries">
 
             <?php if ($result->num_rows > 0): ?>
 
@@ -52,7 +60,7 @@ if (!$result) {
 
                     <?php while ($item = $result->fetch_assoc()): ?>
 
-                        <article class="gallery-item">
+                        <article class="public-card gallery-item">
 
                             <img
                                 src="../<?php echo htmlspecialchars($item["image"]); ?>"

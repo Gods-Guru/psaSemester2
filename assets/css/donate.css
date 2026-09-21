@@ -1,0 +1,5 @@
+/* Donation page-specific styles. */
+
+[aria-labelledby="donate-heading"] form {
+    border-top: 4px solid var(--primary);
+}

@@ -48,35 +48,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Admin Login | My Next Level</title>
     <meta name="description" content="Admin login page for My Next Level." />
     <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
 </head>
-<body>
-    <site-header></site-header>
-
+<body class="admin-auth-page">
     <main>
-        <?php if (!empty($error)): ?>
-            <p><?php echo htmlspecialchars($error); ?></p>
-        <?php endif; ?>
-        <section aria-labelledby="admin-login-heading">
+        <section class="admin-auth-card" aria-labelledby="admin-login-heading">
+            <p class="admin-subtitle">Secure access</p>
             <h1 id="admin-login-heading">Admin login</h1>
+
+            <?php if (!empty($error)): ?>
+                <p class="admin-error-message"><?php echo htmlspecialchars($error); ?></p>
+            <?php endif; ?>
+
             <form method="POST">
-                <label for="admin-username">Email: </label>
-                <input id="admin-username" type="email" name="email" placeholder="Enter your email" required />
+                <div>
+                    <label for="admin-username">Email</label>
+                    <input id="admin-username" type="email" name="email" placeholder="Enter your email" required />
+                </div>
 
-                <label for="admin-password">Password</label>
-                <input id="admin-password" type="password" name="password" placeholder="Enter your password" required />
+                <div>
+                    <label for="admin-password">Password</label>
+                    <input id="admin-password" type="password" name="password" placeholder="Enter your password" required />
+                </div>
 
-                <label for="remember-me">
+                <label class="remember-row" for="remember-me">
                     <input id="remember-me" type="checkbox" name="remember_me" />
                     Remember me
                 </label>
 
-                <button type="submit">Login</button>
-                <div role="alert" aria-live="assertive">[Error message container]</div>
+                <button class="login-button" type="submit">Login</button>
             </form>
         </section>
     </main>
 
-    <site-footer></site-footer>
     <script src="../assets/js/components.js"></script>
 </body>
 </html>

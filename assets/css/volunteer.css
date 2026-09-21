@@ -1,0 +1,5 @@
+/* Volunteer page-specific styles. */
+
+[aria-labelledby="volunteer-heading"] form {
+    border-top: 4px solid var(--secondary);
+}

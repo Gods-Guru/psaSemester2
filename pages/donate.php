@@ -68,70 +68,94 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Donate | My Next Level</title>
     <meta name="description" content="Donation page for My Next Level." />
     <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/donate.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
 </head>
-<body>
+<body class="public-site">
     <site-header></site-header>
 
-    <main>
-        <section aria-labelledby="donate-page-heading">
+    <main class="public-page donate-page">
+        <section class="public-hero donate-hero" aria-labelledby="donate-page-heading">
             <p>Donate</p>
             <h1 id="donate-page-heading">Support My Next Level.</h1>
             <p>Your contribution can help fund community support, programmes and outreach needs.</p>
         </section>
 
-        <section aria-labelledby="donate-reasons-heading">
+        <section class="public-section public-card donate-reasons" aria-labelledby="donate-reasons-heading">
             <h2 id="donate-reasons-heading">Why donations matter</h2>
             <p>[Explanation of how donations support community care and programme delivery.]</p>
         </section>
 
-        <section aria-labelledby="donation-options-heading">
+        <section class="public-form-section donate-form-section" aria-labelledby="donation-options-heading">
             <h2 id="donation-options-heading">Choose a donation amount</h2>
-            <form method="POST">
+            <div class="public-form-wrapper">
+            <form class="public-form donate-form" method="POST">
                 <fieldset>
                     <legend>Donation amount</legend>
-                        <label><input type="radio" name="amount" value="50" /> ₦50k</label>
-                        <label><input type="radio" name="amount" value="100" /> ₦100k</label>
-                        <label><input type="radio" name="amount" value="250" /> ₦250k</label>
-                        <label><input type="radio" name="amount" value="500" /> ₦500k</label>
-                    <label><input type="radio" name="amount" value="custom" /> Custom amount</label>
+                    <div class="public-form-grid">
+                        <label class="public-form-option"><input type="radio" name="amount" value="50" /> ₦50k</label>
+                        <label class="public-form-option"><input type="radio" name="amount" value="100" /> ₦100k</label>
+                        <label class="public-form-option"><input type="radio" name="amount" value="250" /> ₦250k</label>
+                        <label class="public-form-option"><input type="radio" name="amount" value="500" /> ₦500k</label>
+                        <label class="public-form-option public-form-field-full"><input type="radio" name="amount" value="custom" /> Custom amount</label>
+                    </div>
                 </fieldset>
 
-                <label for="custom-amount">Custom donation amount</label>
-                <input id="custom-amount" type="number" name="custom_amount" min="1" placeholder="Enter amount" />
+                <div class="public-form-grid">
+                    <div class="public-form-field public-form-field-full">
+                        <label for="custom-amount">Custom donation amount</label>
+                        <input id="custom-amount" type="number" name="custom_amount" min="1" placeholder="Enter amount" />
+                    </div>
 
-                <label for="donor-name">Full name</label>
-                <input id="donor-name" type="text" name="donor_name" placeholder="Your full name" required />
+                    <div class="public-form-field">
+                        <label for="donor-name">Full name</label>
+                        <input id="donor-name" type="text" name="donor_name" placeholder="Your full name" required />
+                    </div>
 
-                <label for="donor-email">Email</label>
-                <input id="donor-email" type="email" name="donor_email" placeholder="you@example.com" required />
+                    <div class="public-form-field">
+                        <label for="donor-email">Email</label>
+                        <input id="donor-email" type="email" name="donor_email" placeholder="you@example.com" required />
+                    </div>
 
-                <label for="donor-phone">Phone</label>
-                <input id="donor-phone" type="tel" name="donor_phone" placeholder="Your phone number" />
+                    <div class="public-form-field">
+                        <label for="donor-phone">Phone</label>
+                        <input id="donor-phone" type="tel" name="donor_phone" placeholder="Your phone number" />
+                    </div>
 
-                <label for="donation-purpose">Donation purpose</label>
-                <input id="donation-purpose" type="text" name="donation_purpose" placeholder="General fund / programme / community support" />
+                    <div class="public-form-field public-form-field-full">
+                        <label for="donation-purpose">Donation purpose</label>
+                        <input id="donation-purpose" type="text" name="donation_purpose" placeholder="General fund / programme / community support" />
+                    </div>
 
-                <label for="donation-message">Optional message</label>
-                <textarea id="donation-message" name="donation_message" rows="4" placeholder="Add an optional message"></textarea>
+                    <div class="public-form-field public-form-field-full">
+                        <label for="donation-message">Optional message</label>
+                        <textarea id="donation-message" name="donation_message" rows="4" placeholder="Add an optional message"></textarea>
+                    </div>
+                </div>
 
                 <fieldset>
-                    <legend>Payment section placeholder</legend>
-                    <p>[Payment gateway details to be added later.]</p>
+                    <legend>Payment details</legend>
+                    <p>Payment gateway details will be added later for secure processing.</p>
                 </fieldset>
 
-                <button type="submit">Donate now</button>
+                <div class="public-actions">
+                    <button type="submit">Donate now</button>
+                </div>
+
                 <?php if ($success): ?>
-                    <div role="status" aria-live="polite">
+                    <div class="public-message public-success" role="status" aria-live="polite">
                         <?php echo htmlspecialchars($success); ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if ($error): ?>
-                    <div role="alert" aria-live="assertive">
+                    <div class="public-message public-error" role="alert" aria-live="assertive">
                         <?php echo htmlspecialchars($error); ?>
                     </div>
                 <?php endif; ?>
             </form>
+            </div>
         </section>
     </main>
 

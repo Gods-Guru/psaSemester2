@@ -93,30 +93,33 @@ $result = $conn->query($sql);
     <title>Programmes | My Next Level</title>
     <meta name="description" content="Programmes and initiatives at My Next Level." />
     <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
 </head>
-<body>
-    <site-header></site-header>
+<body class="admin-programs">
+    <div class="admin-layout">
+        <?php require_once "admin-navigation.php"; ?>
 
-    <main>
-        <section aria-labelledby="programmes-page-heading">
-            <p>Programmes</p>
-            <h1 id="programmes-page-heading">Current programme areas and initiatives.</h1>
-            <p>[Programme overview placeholder text for the organisation.]</p>
-        </section>
+        <main class="admin-main">
+        <header class="admin-page-header admin-header">
+            <div>
+                <p>Programmes</p>
+                <h1 id="programmes-page-heading">Current programme areas and initiatives.</h1>
+            </div>
+        </header>
 
-        <section aria-labelledby="add-program-heading">
+        <section class="admin-form-card" aria-labelledby="add-program-heading">
 
             <h2 id="add-program-heading">Add Programme</h2>
 
             <?php if ($message): ?>
-                <p><?php echo htmlspecialchars($message); ?></p>
+                <p class="admin-success-message"><?php echo htmlspecialchars($message); ?></p>
             <?php endif; ?>
 
             <?php if ($error): ?>
-                <p><?php echo htmlspecialchars($error); ?></p>
+                <p class="admin-error-message"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
 
-            <form method="POST">
+            <form method="POST" class="admin-form-grid">
 
                 <div>
                     <label for="title">Title</label>
@@ -147,13 +150,15 @@ $result = $conn->query($sql);
                     </select>
                 </div>
 
-                <button type="submit" name="add_program">Add Programme</button>
+                <div class="admin-actions">
+                    <button type="submit" name="add_program">Add Programme</button>
+                </div>
 
             </form>
 
         </section>
 
-        <section class="programs-list" aria-label="Programme list">
+        <section class="admin-section programs-list" aria-label="Programme list">
             <?php if ($result && $result->num_rows > 0): ?>
                 <?php while ($program = $result->fetch_assoc()): ?>
                     <article class="program-card">
@@ -189,14 +194,14 @@ $result = $conn->query($sql);
                                 </p>
                             <?php endif; ?>
 
-                            <div>
-                                <a href="edit-program.php?id=<?php echo $program['id']; ?>">
+                            <div class="admin-actions">
+                                <a class="admin-button secondary" href="edit-program.php?id=<?php echo $program['id']; ?>">
                                     Edit
                                 </a>
 
                                 <form method="POST" style="display: inline;">
                                     <input type="hidden" name="delete_id" value="<?php echo $program['id']; ?>">
-                                    <button type="submit" name="delete_program">
+                                    <button class="danger" type="submit" name="delete_program">
                                         Delete
                                     </button>
                                 </form>
@@ -209,9 +214,10 @@ $result = $conn->query($sql);
                 <p>No programs available at the moment.</p>
             <?php endif; ?>
         </section>
-    </main>
+        </main>
+    </div>
 
-    <site-footer></site-footer>
+
     <script src="../assets/js/components.js"></script>
 </body>
 </html>
